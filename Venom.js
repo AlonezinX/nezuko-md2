@@ -39,7 +39,6 @@ const { color, bgcolor } = require("./lib/color");
 const { performance } = require('perf_hooks')
 const yts = require('yt-search')
 
-const logos = require('textmaker-thiccy');
 
 const { smsg, getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, fetchText, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc')
 
