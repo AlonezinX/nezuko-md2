@@ -599,7 +599,7 @@ venomkkk = `
 │⊳ ${prefix}bloquear
 │⊳ ${prefix}desbloquear
 │
-└──⊰ _*${nomebot}*_`
+└──⊰ _*${nomedobot}*_`
 let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/Venom-Md.jpg') }, { upload: venom.waUploadToServer })
                 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
