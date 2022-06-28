@@ -350,6 +350,16 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 m.reply(e)
                 }
                 break	
+              case 'emojimix': {
+	        if (!text) return replay(`Exemplo : ${prefix + command} 😡+🤔`)
+		let [emoji1, emoji2] = text.split`+`
+		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
+		for (let res of anu.results) {
+		    let encmedia = await venom.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
+		    await fs.unlinkSync(encmedia)
+		}
+	    }
+	    break  
 	case 'demote': case 'rebaixar': case 'tiraadm': case 'tiraradm': case 'deladm': {
 		    
 		    		
@@ -429,12 +439,12 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
 		enviar(resposta.aguarde)
                 if (/image/.test(mime)) {
 		    let media = await quoted.download()
-		    let encmedia = await venom.sendImageAsSticker(m.chat, media, m, { packname: 'Venombot-md', author: 'Venom' })
+		    let encmedia = await venom.sendImageAsSticker(m.chat, media, m, { packname: 'nezuko-md', author: 'The AloneX Ofc' })
 		    await fs.unlinkSync(encmedia)
 		} else if (/video/.test(mime)) {
 		    if ((quoted.msg || quoted).seconds > 11) return enviar(resposta.mxm10s)
 		    let media = await quoted.download()
-		    let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: 'Venombot-md', author: 'Venom' })
+		    let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: 'nezuko-md', author: 'The AloneX Ofc' })
 		    await fs.unlinkSync(encmedia)
 		} else {
             	    throw resposta.errofigu
@@ -462,6 +472,17 @@ break
             }
             
             break	    
+             case 'togif': {
+                if (!quoted) return reply(`Marque a figurinha`)
+                if (!/webp/.test(mime)) return reply(`Responder adesivo com legenda *${prefix + command}*`)
+                reply(responder.aguarde)
+		let { webp2mp4File } = require('./lib/uploader')
+                let media = await venom.downloadAndSaveMediaMessage(quoted)
+                let webpToMp4 = await webp2mp4File(media)
+                await venom.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Covertido de um webp' }, gifPlayback: true }, { quoted: m })
+                await fs.unlinkSync(media)
+            }
+            break
 case 'attp':
 try{ 
 if (!c) return enviar(`preciso do text krl`)
@@ -540,12 +561,12 @@ venomkkk = `
 │⊳ ${prefix}embreve
 │⊳ ${prefix}embreve
 │
-├──⊰ _*NSFW*_
+├──⊰ _*CONVERTER*_
 │
-│⊳ ${prefix}embreve
-│⊳ ${prefix}embreve
-│⊳ ${prefix}embreve
-│⊳ ${prefix}embreve
+│⊳ ${prefix}emojimix [emoji1 + emoji2]
+│⊳ ${prefix}toimage
+│⊳ ${prefix}sticker
+│⊳ ${prefix}togif
 │
 ├──⊰ _*PESQUISA*_
 │
@@ -578,7 +599,7 @@ venomkkk = `
 │⊳ ${prefix}bloquear
 │⊳ ${prefix}desbloquear
 │
-└──⊰ _*${nomedobot}*_`
+└──⊰ _*${nomebot}*_`
 let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/Venom-Md.jpg') }, { upload: venom.waUploadToServer })
                 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
@@ -965,8 +986,8 @@ enviar(`
 console.log(color('COMANDO NAO REGISTRADO', 'green'))
 }            
 
-            if (budy.startsWith('sexo')) {
-                     enviar('Vai ora seu fimose 😛')
+            if (budy.startsWith('bot')) {
+                     enviar('ola humano, oq deseja?')
                      console.log(color('AUTO RESPOSTA', 'blue'))
 
               
@@ -975,7 +996,7 @@ console.log(color('COMANDO NAO REGISTRADO', 'green'))
                 }                                     
      
  } catch (err) {
-      m.enviar(util.format(err))
+      m.reply(util.format(err))
     }
 }
 
