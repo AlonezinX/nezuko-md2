@@ -5,7 +5,7 @@ do
 echo "${rosa}aguarde iniciando VenomBot-md..${rosa}
 
 ESTE ARQUIVO É PROGRAMADO PARA O BOT NÃO CAIR APÓS ALGUMA QUEDA DE CONEXÃO"
-    npm start
+    node index.js
     sleep 1
 
 done
