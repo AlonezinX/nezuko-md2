@@ -1,25 +1,4 @@
-/*╭━═[🎫𝒂𝒗𝒊𝒔𝒐 𝒅𝒐 𝒗𝒆𝒏𝒐𝒎🎫]═━━⪨
 
-  𝒃𝒂𝒔𝒆 𝒇𝒆𝒊𝒕𝒂 𝒑𝒐𝒓: 𝑽𝒆𝒏𝒐𝒎 𝑴𝒐𝒅𝒔
-  
-  𝒎𝒆𝒖 𝒄𝒂𝒏𝒂𝒍: https://youtube.com/channel/UCOoc5DOT_M6foZa1jSOI6JQ
-  𝒎𝒆𝒖 𝒘𝒉𝒂𝒕𝒔𝒑𝒂𝒑: https://wa.me/559784388524
-  𝒎𝒆𝒖 𝒈𝒓𝒖𝒑𝒐: https://chat.whatsapp.com/LtjFqe7AEKtKMLeyyHWqrY
-  𝒎𝒆𝒖 𝒓𝒆𝒔𝒕 𝒂𝒑𝒊𝒔 𝒇𝒓𝒆𝒆: https://venom-apis.herokuapp.com/api
-  
-  𝒆𝒔𝒕𝒂 𝒃𝒂𝒔𝒆 𝒇𝒐𝒊 𝒇𝒂𝒊𝒕𝒂 𝒑𝒂𝒓𝒂 𝒅𝒆𝒗𝒔 𝒆 𝒊𝒏𝒊𝒄𝒊𝒂𝒏𝒕𝒆𝒔 
-  𝒒𝒖𝒆 𝒒𝒖𝒆𝒊𝒓𝒂𝒎 𝒇𝒂𝒛𝒆𝒓 𝒔𝒆𝒖 𝒑𝒓𝒐𝒑𝒓𝒊𝒐 𝒃𝒐𝒕 𝒆𝒎 𝒎𝒖𝒍𝒕 𝒅𝒆𝒗𝒊𝒄𝒆
-  𝒃𝒐𝒕 100% 𝒆𝒅𝒊𝒕𝒂𝒗𝒆𝒍 𝒆 𝒍𝒊𝒃𝒆𝒓𝒂𝒅𝒐 𝒑𝒂𝒓𝒂 𝒄𝒍𝒊𝒆𝒏𝒕𝒔
-  𝒄𝒂𝒔𝒐 𝒇𝒐𝒓 𝒇𝒂𝒛𝒆𝒓 𝒔𝒆𝒖𝒃𝒐𝒕 𝒅𝒆𝒊𝒙𝒂 𝒐𝒔 𝒄𝒓𝒆𝒅𝒊𝒕𝒐𝒔 𝒅𝒐 𝒅𝒐𝒏𝒐 𝒅𝒂 𝒃𝒂𝒔𝒆
-  𝒆𝒔𝒕𝒆 𝒃𝒐𝒕 𝒑𝒐𝒅𝒆 𝒂𝒑𝒂𝒓𝒆𝒄𝒆 𝒆𝒓𝒓𝒐𝒔 𝒑𝒐𝒊𝒔 𝒆𝒔𝒕𝒂 𝒆𝒎 𝒃𝒆𝒕𝒂
-  𝒅𝒆𝒊𝒙𝒆𝒊 𝒆𝒙𝒆𝒎𝒑𝒍𝒐𝒔 𝒅𝒆 𝒄𝒂𝒔𝒆𝒔 𝒂𝒅𝒊𝒄𝒊𝒐𝒏𝒂𝒅𝒂𝒔 𝒑𝒂𝒓𝒂 𝒑𝒐𝒓 𝒐𝒖𝒕𝒓𝒐𝒔
-  
-  𝒕𝒐𝒅𝒐𝒔 𝒎𝒐𝒅𝒖𝒍𝒆𝒔 𝒆𝒔𝒕𝒂 𝒊𝒏𝒔𝒕𝒂𝒍𝒂𝒅𝒐𝒔 𝒏𝒂𝒐 𝒑𝒓𝒆𝒄𝒊𝒔𝒂 𝒅𝒆 𝒃𝒂𝒔𝒉 𝒊𝒏𝒔𝒕𝒂𝒍𝒍
-  𝒆𝒔𝒑𝒆𝒓𝒐 𝒕𝒆 𝒂𝒋𝒖𝒅𝒂𝒅𝒐 𝒂 𝒄𝒂𝒅𝒂 𝒖𝒎 𝒅𝒆 𝒗𝒐𝒄𝒆𝒔 𝒒𝒖𝒆 𝒒𝒖𝒆𝒓𝒊𝒂 𝒎𝒖𝒅𝒂𝒓 𝒑𝒂𝒓𝒂 𝒖𝒎 𝒃𝒐𝒕 𝒎𝒅
-  𝒇𝒂𝒄𝒂 𝒖𝒎 𝒃𝒐𝒎 𝒖𝒔𝒐 𝒃𝒐𝒂 𝒔𝒐𝒓𝒕𝒆 💞
-  
-╰━━━━━━━━━━━⪨
-*/
 //UNICIAR CONEXAO COM O MULT DEVICE
 const { default: makeWASocket, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, downloadContentFromMessage, WAProto, downloadHistory, proto, getMessage, generateWAMessageContent, prepareWAMessageMedia, Mimetype } = require("@Venom-Md/baileys-md")
 const fs = require('fs')
@@ -43,10 +22,10 @@ const yts = require('yt-search')
 const { smsg, getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, fetchText, getBuffer, jsonformat, delay, format, logic, generateProfilePicture, parseMention, getRandom } = require('./lib/myfunc')
 
 
-const nomedobot =  '𝑽𝒆𝒏𝒐𝒎𝑩𝒐𝒕-𝑴𝒅' //nom do bot
+const nomedobot =  'NEZUKO-MD' //nom do bot
 const prefa = ['/','!','.','*','#','$'] //prefixo
 const  sp = '⭔'
-const dono = ['559784388524','559784388524'] //dono
+const dono = ['5588998204406','5588998204406'] //dono
 const venomapis = 'https://venom-apis.herokuapp.com/api' 
 const apikey  = [ 'venom' ]
 
@@ -245,7 +224,7 @@ await venom.relayMessage(m.chat, list, {messageId: m.key.id})
         switch(command) {
 
 	    case 'comprabot': {	    
-                enviar(`Para comprar o bot, fale com o meu criador:\n\nhttps://wa.me/559784388524?text=quero+comprar+o+bot+VenomBot-md`)
+                enviar(`Para comprar o bot, fale com o meu criador:\n\nhttps://wa.me/5588998204406?text=quero+comprar+a+nezukobot`)
             }
             
             break
@@ -272,6 +251,19 @@ let teks = `══ *👥membros!* ══
                 venom.sendMessage(m.chat, { text: teks, mentions: groupMembers.map(a => a.id) }, { quoted: m })
                 }
                 break
+                case 'group': case 'grup': case 'gp': case 'grupo': {            	    
+                if (!m.isGroup) throw resposta.group
+                if (!isBotGroupAdmins) throw resposta.botAdmin
+                if (!isGroupAdmins) throw resposta.admin
+                if (c === 'abrir'){
+              await alone.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+              } else if (c === 'fechar'){
+              await alone.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+             } else if (!c) {
+            enviarbutao(m.chat, `🔒 *_COFIGURAÇÃO DO GRUPO_* 🔓`, `Selecione abaixo`,  [{ displayText: `💠 Api`, url : `http://nezuko-rest-api.herokuapp.com/docs`},{ quickReplyButton: { displayText: `🔓ABRIR`, id: `${prefix}gp abrir` } }, { quickReplyButton: { displayText: `🔒FECHAR`, id: `${prefix}gp fechar` } }])           
+            }
+            }
+            break            
 break
             case 'join': case 'entrar': case 'entrargp': case 'aceitarconvite': case 'joingp': {
             	    
@@ -481,18 +473,28 @@ console.log(e)
 enviar('deu erro na api filho')
 }
 break
+ case 'reagir': {                
+                reactionMessage = {
+                    react: {
+                        text: args[0],
+                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
+                    }
+                }
+                venom.sendMessage(m.chat, reactionMessage)
+            }
+            break             
 	    
             case 'owner': case 'creator': case 'criador': case 'dono': {
             	    
 		    		
                 let vcard = 'BEGIN:VCARD\n' // metadata do ctt
                     + 'VERSION:3.0\n' 
-                    + 'N:;Venom💞.;;;'
-                    + 'FN:Venom💞.\n' // nome todo
-                    + 'ORG:Venom💞;\n' // organização
-                    + 'TEL;type=CELL;type=VOICE;waid=559784388524:+55 97 98438-8524\n' // WhatsApp ID + número
+                    + 'N:;Alone.;;;'
+                    + 'FN:Alone.\n' // nome todo
+                    + 'ORG:Alone;\n' // organização
+                    + 'TEL;type=CELL;type=VOICE;waid=5588998204406:+55 88 99820-4406\n' // WhatsApp ID + número
                     + 'END:VCARD' // finalização
-                venom.sendMessage(m.chat, { contacts: { displayName: 'Venom ne vida💞.', contacts: [{ vcard }] } }, { quoted: m })
+                venom.sendMessage(m.chat, { contacts: { displayName: 'The AloneX Ofc.', contacts: [{ vcard }] } }, { quoted: m })
             }
             
             
@@ -515,197 +517,93 @@ break
             }            
             break
 //𝒄𝒂𝒔𝒆𝒔 𝒅𝒆 𝒎𝒆𝒏𝒖 𝒅𝒐 𝒃𝒐𝒕            
-            case 'menu': {
+            
+case 'menu': {
             
 venomkkk = `
 
-💞𝑶𝒍𝒂 ${pushname} 𝒃𝒆𝒎 𝒗𝒊𝒏𝒅𝒐 𝒂𝒐 𝒗𝒆𝒏𝒐𝒎𝒃𝒐𝒕-𝒎𝒅
-
-
-╭━═[🎫𝒂𝒗𝒊𝒔𝒐 𝒅𝒐 𝒗𝒆𝒏𝒐𝒎🎫]═━━⪨
-
-  𝒇𝒂𝒄𝒂 𝒖𝒎 𝒃𝒐𝒎 𝒖𝒔𝒐 𝒃𝒐𝒂 𝒔𝒐𝒓𝒕𝒆 💞
-  
-╰━━━━━━━━━━━⪨
-
-╭━━━━━━━━━━━⪨
-┃🧑‍🔧𝒄𝒓𝒆𝒅𝒊𝒕𝒐 𝒂𝒐 𝒄𝒓𝒊𝒂𝒅𝒐𝒓🧑‍🔧
-╚══╝
- 𝒘𝒉𝒂𝒕𝒔𝒂𝒑𝒑: https://wa.me/559784388524
- 𝑵𝒊𝒄𝒌: 𝑽𝒆𝒏𝒐𝒎
- 𝒎𝒆𝒖 𝒄𝒂𝒏𝒂𝒍: https://youtube.com/channel/UCOoc5DOT_M6foZa1jSOI6JQ
-  𝒎𝒆𝒖 𝒘𝒉𝒂𝒕𝒔𝒑𝒂𝒑: https://wa.me/559784388524
-  𝒎𝒆𝒖 𝒈𝒓𝒖𝒑𝒐: https://chat.whatsapp.com/LtjFqe7AEKtKMLeyyHWqrY
-  𝒎𝒆𝒖 𝒓𝒆𝒔𝒕 𝒂𝒑𝒊𝒔 𝒇𝒓𝒆𝒆: https://venom-apis.herokuapp.com/api
-  
-╭━━━━━━━━━━━⪨
-┃🥳𝚊𝚐𝚛𝚊𝚍𝚎𝚌𝚒𝚖𝚎𝚗𝚝𝚘𝚜🥳
-┃ 🌟 kelly
-┃ 🌟 lago
-┃ 🌟 tobi
-┃ 🌟 sayo
-┃ 🌟 Dios Killer🧸
-┃ 🌟 skiller ofc
-╚═[*_${nomedobot}_*]═╝
-╰━━━━━━━━━━━⪨`
+┌──⊰ _*GRUPOS*_
+│
+│⊳ ${prefix}join
+│⊳ ${prefix}promover [@]
+│⊳ ${prefix}rebaixar [@]
+│⊳ ${prefix}banir [@]
+│⊳ ${prefix}adicionar [@]
+│⊳ ${prefix}setname [texto]
+│⊳ ${prefix}hidetag [texto]
+│⊳ ${prefix}grupo [opção]
+│
+├──⊰ _*DIVERSÃO*_
+│
+│⊳ ${prefix}embreve
+│⊳ ${prefix}embreve
+│⊳ ${prefix}embreve
+│⊳ ${prefix}embreve
+│
+├──⊰ _*NSFW*_
+│
+│⊳ ${prefix}embreve
+│⊳ ${prefix}embreve
+│⊳ ${prefix}embreve
+│⊳ ${prefix}embreve
+│
+├──⊰ _*PESQUISA*_
+│
+│⊳ ${prefix}pinterest
+│⊳ ${prefix}anime
+│⊳ ${prefix}play (off)
+│⊳ ${prefix}metadinha
+│⊳ ${prefix}nick
+│
+├──⊰ _*ALTERADORES*_
+│
+│⊳ ${prefix}bass
+│⊳ ${prefix}blown
+│⊳ ${prefix}deep
+│⊳ ${prefix}earrape
+│⊳ ${prefix}fast
+│⊳ ${prefix}fat
+│⊳ ${prefix}nightcore
+│⊳ ${prefix}reverse
+│⊳ ${prefix}robot
+│⊳ ${prefix}slow
+│⊳ ${prefix}smooth
+│⊳ ${prefix}tupai
+│
+├──⊰ _*CRIADOR*_
+│
+│⊳ ${prefix}reagir [emoji]
+│⊳ ${prefix}sair
+│⊳ ${prefix}setpp
+│⊳ ${prefix}bloquear
+│⊳ ${prefix}desbloquear
+│
+└──⊰ _*${nomebot}*_`
 let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/Venom-Md.jpg') }, { upload: venom.waUploadToServer })
                 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
                             imageMessage: message.imageMessage,
                             hydratedContentText: venomkkk,
-                            hydratedButtons: [{
-                              
-                                quickReplyButton: {
-                                    displayText: '➥🍭𝑴𝒆𝒏𝒖🍭',
-                                    id: 'menu1'
-                                }  
-                                }, {                                
-                                quickReplyButton: {
-                                    displayText: '➥⚡𝑽𝒆𝒍𝒐𝒄𝒊𝒅𝒂𝒅𝒆⚡',
-                                    id: 'ping'
-                                }
-                            }]
-                        }
-                    }
-                }), { userJid: m.chat, quoted: m })
-                venom.relayMessage(m.chat, template.message, { messageId: template.key.id })
-            }
-            
-            break
-case 'menu1': {
-            
-venomkkk = `
-
-💞𝑶𝒍𝒂 ${pushname} 𝒃𝒆𝒎 𝒗𝒊𝒏𝒅𝒐 𝒂𝒐 𝒎𝒆𝒏𝒖 𝑽𝒆𝒏𝒐𝒎𝑩𝒐𝒕-𝑴𝒖𝒍𝒕 𝑫𝒆𝒗𝒊𝒄𝒆
-
-
-╭━═[☽𝒏𝒐𝒕𝒂☽]═━━⪨
-  𝒎𝒂𝒊𝒔 𝒄𝒐𝒎𝒂𝒏𝒅𝒐𝒔 𝒆𝒎 𝒃𝒓𝒆𝒗𝒆 𝒇𝒊𝒄𝒂 𝒔𝒆𝒎𝒑𝒓𝒆 𝒍𝒊𝒈𝒂𝒅𝒐 𝒏𝒐 𝒎𝒆𝒖 𝒄𝒂𝒏𝒂𝒍
-  𝒏𝒂𝒔 𝒑𝒓𝒐𝒙𝒊𝒎𝒂𝒔 𝒂𝒕𝒖𝒂𝒍𝒊𝒛𝒂𝒄𝒂𝒐 𝒊𝒓𝒆𝒊 𝒑𝒐𝒓 𝒄𝒐𝒊𝒔𝒂𝒔 𝒏𝒐𝒗𝒂
-  𝒐 𝒃𝒐𝒕 𝒆𝒔𝒕𝒂 𝒆𝒎 𝒇𝒂𝒛𝒆𝒓 𝒃𝒆𝒕𝒂 𝒆𝒔𝒑𝒆𝒓𝒐 𝒒𝒖𝒆 𝒕𝒐𝒅𝒐𝒔 𝒆𝒏𝒕𝒆𝒏𝒅𝒂
-  𝒅𝒖𝒗𝒊𝒅𝒂𝒔 𝒐𝒖 𝒓𝒆𝒄𝒍𝒂𝒎𝒂𝒄𝒐𝒆𝒔 𝒆𝒏𝒕𝒓𝒆 𝒆𝒎 𝒄𝒐𝒏𝒕𝒂𝒕𝒐 𝒏𝒐𝒔 𝒃𝒐𝒕𝒐𝒆𝒔
-╰━━━━━━━━━━━⪨
-╭━━━━━━━━━━━
-┃ 🎈𝒄𝒐𝒎𝒂𝒏𝒅𝒐𝒔 𝒔𝒊𝒎𝒑𝒍𝒆𝒔
-╚═━━━━━━━━━═╝
-╭━━━━━━━━━━━⪨
-┃${prefix}adicionar (𝒏𝒖𝒎𝒆𝒓𝒐)
-┃${prefix}kick (𝒎𝒂𝒓𝒒𝒖𝒆@)
-┃${prefix}promote (𝒎𝒂𝒓𝒒𝒖𝒆@)
-┃${prefix}demote (𝒎𝒂𝒓𝒒𝒖𝒆@)
-┃${prefix}dono (𝒄𝒕𝒕 𝒅𝒐 𝒗𝒆𝒏𝒐𝒎)
-┃${prefix}attp (𝒕𝒆𝒙𝒕𝒐)
-┃${prefix}sticker (𝒎𝒂𝒓𝒒𝒖𝒆 𝒂 𝒇𝒐𝒕𝒐)
-┃${prefix}setname (𝒏𝒐𝒎𝒆)
-┃${prefix}setprofile (𝒎𝒂𝒓𝒒𝒖𝒆 𝒂 𝒇𝒐𝒕𝒐)
-┃${prefix}block (𝒏𝒖𝒎𝒆𝒓𝒐)
-┃${prefix}unblok (𝒏𝒖𝒎𝒆𝒓𝒐)
-┃${prefix}sair (𝒃𝒐𝒕 𝒔𝒂𝒊 𝒅𝒐 𝒈𝒓𝒖𝒑𝒐)
-┃${prefix}entrar (𝒍𝒊𝒏𝒌 𝒅𝒐 𝒈𝒓𝒖𝒑𝒐)
-┃${prefix}nick (𝒔𝒆𝒖 𝒏𝒐𝒎𝒆)
-╰━━━━━━━━━━━⪨
-
-╭━━━━━━━━━━━
-┃ 📥𝑫𝒐𝒘𝒏𝒍𝒐𝒂𝒅𝒔
-╚═━━━━━━━━━═╝
-╭━━━━━━━━━━━⪨
-┃${prefix}anime (𝒑𝒆𝒔𝒒𝒖𝒊𝒔𝒂𝒓)
-┃${prefix}pinterest (𝒑𝒆𝒔𝒒𝒖𝒊𝒔𝒂𝒓)
-┃${prefix}play (𝒏𝒐𝒎𝒆 𝒅𝒂 𝒎𝒖𝒔𝒊𝒄𝒂)
-┃${prefix}metadinha 
-╰━━━━━━━━━━━⪨
-╭━━━━━━━━━━━
-┃ 🎤modficador de voz
-╚═━━━━━━━━━═╝
-┃${prefix}Bass
-┃${prefix}Blown
-┃${prefix}Deep
-┃${prefix}Earrape
-┃${prefix}Fast
-┃${prefix}Fat
-┃${prefix}Nightcore
-┃${prefix}Reverse
-┃${prefix}Robot
-┃${prefix}Slow
-┃${prefix}Smooth
-┃${prefix}Tupai
-╰━━━━━━━━━━━⪨
-
-╭━━━━━━━━━━━
-┃🌠𝑳𝒐𝒈𝒐𝒔 𝒆 𝑬𝒅𝒊𝒕𝒔
-╚═━━━━━━━━━═╝
-╭━━━━━━━━━━━⪨
-┃${prefix}lava (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}3dstone (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit1 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit2 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit3 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit4 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit5 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit6 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit7 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit8 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit9 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit10 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit11 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit12 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit13 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit14 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edi15 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit16 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit17 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit18 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-┃${prefix}edit19 (𝑺𝒆𝒖 𝑻𝒆𝒙𝒕𝒐)
-╰━━━━━━━━━━━⪨
-
-╭━━━━━━━━━━━⪨
-┃🧑‍🔧𝒄𝒓𝒆𝒅𝒊𝒕𝒐 𝒂𝒐 𝒄𝒓𝒊𝒂𝒅𝒐𝒓🧑‍🔧
-╚══╝
- 𝒄𝒂𝒏𝒂𝒍 𝒅𝒐 𝒚𝒐𝒖𝒕𝒖𝒃𝒆: https://youtube.com/channel/UCOoc5DOT_M6foZa1jSOI6JQ
- 𝒘𝒉𝒂𝒕𝒔𝒂𝒑𝒑: https://wa.me/559784388524
- 𝒏𝒊𝒄𝒌: 𝑽𝒆𝒏𝒐𝒎
- 
-╭━━━━━━━━━━━⪨
-┃🥳𝚊𝚐𝚛𝚊𝚍𝚎𝚌𝚒𝚖𝚎𝚗𝚝𝚘𝚜🥳
-┃ 🌟 kelly
-┃ 🌟 lago
-┃ 🌟 tobi
-┃ 🌟 sayo
-┃ 🌟 Dios Killer🧸
-┃ 🌟 skiller ofc
-╚═[*_${nomedobot}_*]═╝
-╰━━━━━━━━━━━⪨`
-let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/Venom-Md.jpg') }, { upload: venom.waUploadToServer })
-                const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            imageMessage: message.imageMessage,
-                            hydratedContentText: venomkkk,
-                            hydratedButtons: [{
-                                urlButton: {
-                                    displayText: '💞𝑩𝒂𝒔𝒆 𝒎𝒅',
-                                    url: 'https://github.com/Venom-ofc/VenomBot-md'
-                                }
-                            }, {
+                            hydratedButtons: [{                         
                                 callButton: {
-                                    displayText: '📱𝑪𝒂𝒍𝒍 𝒃𝒚 𝑽𝒆𝒏𝒐𝒎',
-                                    phoneNumber: '+55 97 9843-88524'
+                                    displayText: 'numero do criador',
+                                    phoneNumber: '+55 88 99820-4406'
                                 }
                             }, {
                                quickReplyButton: {
-                                    displayText: '☽𝑪𝒓𝒊𝒂𝒓 𝒖𝒎 𝒃𝒐𝒕 𝒎𝒅',
-                                    id: 'ajuda'
+                                    displayText: 'velocidade',
+                                    id: 'pinh'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: '👤𝑪𝒕𝒕 𝒅𝒐 𝒗𝒆𝒏𝒐𝒎',
+                                    displayText: 'criador',
                                     id: 'dono'
                                 }  
                             }, {
                                 quickReplyButton: {
-                                    displayText: '🎁𝑰𝒎𝒖𝒏𝒆𝒔 𝒅𝒐 𝒗𝒆𝒏𝒐𝒎',
-                                    id: 'menu2'
+                                    displayText: 'comprar o bot',
+                                    id: 'comprabot'
                                 }
                             }]
                         }
@@ -1057,10 +955,6 @@ case 'metadinha': {
             }
 	    break            
 
-					case 'testekk':
-					{enviar('oie venom')}
-					break
-
             default:
             
 if (prefix && isCmd) {
@@ -1080,9 +974,9 @@ console.log(color('COMANDO NAO REGISTRADO', 'green'))
                 }
                 }                                     
      
-} catch (err) {
-console.log(color('erro', 'red'), err)
-}
+ } catch (err) {
+      m.enviar(util.format(err))
+    }
 }
 
 let file = require.resolve(__filename)
