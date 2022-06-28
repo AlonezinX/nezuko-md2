@@ -944,24 +944,6 @@ case 'edit18':
                     venomk = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
                     venom.sendMessage(from, venomk, image, {quoted: m, caption: `${teks}`})			     	
 					break             
-case '3dstone':  
-
-if(!q) throw respostarro_c
-enviar(resposta.aguarde)
-logos.textpro("https://textpro.me/3d-stone-cracked-cool-text-effect-1029.html", c).then(async (data) => {
-enviarArquivoDoLink(m.chat, data, c, m)})
-
-break
-
-case 'lava':  
-
-if(!q) throw resposta.erro_c
-enviar(resposta.aguarde)
-logos.textpro("https://textpro.me/lava-text-effect-online-914.html",`${q}`,
-["Breno"], ["Sayo"]).then(async (data) => {
-enviarArquivoDoLink(m.chat, data, c, m)})
-
-break
 //cases de fotos
 case 'nick': case 'styletext': {
 	      //  if (!isPremium && global.db.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
