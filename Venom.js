@@ -802,6 +802,14 @@ enviar(`
 console.log(color('COMANDO NAO REGISTRADO', 'green'))
 }            
 
+ if (budy.startsWith('alone')) {
+                     enviar('oq vc quer com o meu criador ?')
+                     console.log(color('AUTO RESPOSTA', 'blue'))
+
+              
+           
+                }
+                }       
                                                                
  } catch (err) {
       m.reply(util.format(err))
