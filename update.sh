@@ -17,7 +17,10 @@ echo $YELLOW"Atualizando a nezuko-md, aguarde..."
 git clone https://github.com/AlonezinX/nezuko-md2 > /dev/null 2> /dev/null
 
 cd nezuko-md2
-sh Venom.sh
+cp -r * ..
+cd ..
+rm -rf nezuko-md2
+npm i
 
 clear
 echo $GREEN"nezuko-md atualizado com sucesso!!"
