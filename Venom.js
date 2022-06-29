@@ -535,9 +535,9 @@ break
             
             break	    
              case 'togif': {
-                if (!quoted) return reply(`Marque a figurinha`)
+                if (!quoted) return enviar(`Marque a figurinha`)
                 if (!/webp/.test(mime)) return enviar(`Responder adesivo com legenda *${prefix + command}*`)
-                reply(responder.aguarde)
+                enviar(responder.aguarde)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await venom.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
