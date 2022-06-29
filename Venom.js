@@ -257,9 +257,9 @@ let teks = `══ *👥membros!* ══
                 if (!isBotGroupAdmins) throw resposta.botAdmin
                 if (!isGroupAdmins) throw resposta.admin
                 if (c === 'abrir'){
-              await alone.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+              await venom.groupSettingUpdate(m.chat, 'not_announcement').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
               } else if (c === 'fechar'){
-              await alone.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+              await venom.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
              } else if (!c) {
             enviarbutao(m.chat, `🔒 *_COFIGURAÇÃO DO GRUPO_* 🔓`, `Selecione abaixo`,  [{ displayText: `💠 Api`, url : `http://nezuko-rest-api.herokuapp.com/docs`},{ quickReplyButton: { displayText: `🔓ABRIR`, id: `${prefix}gp abrir` } }, { quickReplyButton: { displayText: `🔒FECHAR`, id: `${prefix}gp fechar` } }])           
             }
@@ -333,7 +333,7 @@ break
                         { buttonId: 'editinfo open', buttonText: { displayText: 'abrir' }, type: 1 },
                         { buttonId: 'editinfo close', buttonText: { displayText: 'fechar' }, type: 1 }
                     ]
-                    await venom.sendButtonText(m.chat, buttons, `escola uma das opções.`, venom.user.name, m)
+                    await enviarbutao(m.chat, buttons, `escola uma das opções.`, venom.user.name, m)
 
             }
             }
