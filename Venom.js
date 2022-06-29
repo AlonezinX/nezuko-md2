@@ -501,12 +501,12 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
 		enviar(resposta.aguarde)
                 if (/image/.test(mime)) {
 		    let media = await quoted.download()
-		    let encmedia = await venom.sendImageAsSticker(m.chat, media, m, { packname: 'nezuko-md', author: 'The AloneX Ofc' })
+		    let encmedia = await venom.sendImageAsSticker(m.chat, media, m, { packname: 'nezuko-md by The AloneX Ofc', author: `${pushname}` })
 		    await fs.unlinkSync(encmedia)
 		} else if (/video/.test(mime)) {
 		    if ((quoted.msg || quoted).seconds > 11) return enviar(resposta.mxm10s)
 		    let media = await quoted.download()
-		    let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: 'nezuko-md', author: 'The AloneX Ofc' })
+		    let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: 'nezuko-md by The AloneX Ofc', author: `${pushname}})
 		    await fs.unlinkSync(encmedia)
 		} else {
             	    throw resposta.errofigu
@@ -535,9 +535,9 @@ break
             
             break	    
              case 'togif': {
-                if (!quoted) return reply(`Marque a figurinha`)
+                if (!quoted) return enviar(`Marque a figurinha`)
                 if (!/webp/.test(mime)) return enviar(`Responder adesivo com legenda *${prefix + command}*`)
-                reply(resposta.aguarde)
+                enviar(resposta.aguarde)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await venom.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
