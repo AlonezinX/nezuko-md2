@@ -506,7 +506,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
 		} else if (/video/.test(mime)) {
 		    if ((quoted.msg || quoted).seconds > 11) return enviar(resposta.mxm10s)
 		    let media = await quoted.download()
-		    let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: 'nezuko-md by The AloneX Ofc', author: `${pushname}})
+		    let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: 'nezuko-md by The AloneX Ofc', author: `${pushname`}})
 		    await fs.unlinkSync(encmedia)
 		} else {
             	    throw resposta.errofigu
