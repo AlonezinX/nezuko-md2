@@ -26,16 +26,16 @@ const nomedobot =  'NEZUKO-MD' //nom do bot
 const prefa = ['/','!','.','*','#','$'] //prefixo
 const  sp = '⭔'
 const dono = ['5588998204406','5588998204406'] //dono
-const venomapis = 'https://venom-apis.herokuapp.com/api' 
-const apikey  = [ 'venom' ]
+const venomapis = 'https://nezuko-rest-api.herokuapp.com/docs' 
+const apikey  = [ 'alonezxkk' ]
 
 APIs = {
-	zenz: 'https://venom-apis.herokuapp.com',
+	zenz: 'https://nezuko-rest-api.herokuapp.com/docs',
 }
 
 // Apikey Website Api
 APIKeys = {
-	'https://venom-apis.herokuapp.com': 'venom',
+	'https://nezuko-rest-api.herokuapp.com/docs': 'alonezxkk',
 }
 
 api = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
@@ -46,14 +46,14 @@ const {
  ytPlay
 } = require('./lib/youtubev2')
 
-const img = fs.readFileSync('./lib/Venom-Md.jpg') //imagem do menu
+const img = fs.readFileSync('./lib/nezuko.jpg') //imagem do menu
 
 
 const mentions = (teks, memberr, id) => {
        (id == null || id == undefined || id == false) ? venom.sendMessage(m.chat, {text: teks.trim(), mentions: memberr}) : venom.sendMessage(m.chat, {text: teks.trim(), mentions: memberr})
         }
         const replyc = (txt) => {
- 		      return venom.sendMessage('559784388524@s.whatsapp.net', 'bot on ', { text: txt }, { quoted: m })
+ 		      return venom.sendMessage('5588998204406@s.whatsapp.net', 'bot on ', { text: txt }, { quoted: m })
      		}
 //EXPORTA MODULOS DOIDEX E FUNCOES
 module.exports = venom = async (venom, m, chatUpdate) => {
@@ -86,7 +86,8 @@ module.exports = venom = async (venom, m, chatUpdate) => {
     erro: 'acorreu um erro tente dnv🧑‍🔧',
     marqueoarquivo: 'marque o arquivo é use:',
     marquesticker: 'marque a figurinha',
-    convertmsgimg: 'figurinha convertida para foto'
+    convertmsgimg: 'figurinha convertida para foto',
+    botAdmin: 'para executar este comando o bot precisa ser adm'
     
 }
         //DEFINICOES DE GRUPO
@@ -146,7 +147,7 @@ module.exports = venom = async (venom, m, chatUpdate) => {
 		const pperfil = await getBuffer(pporang)
 		//enviar
 		const enviar = (txt) => {
- 		     venom.sendMessage(m.chat, {text: txt, quoted: m, thumbnail: img, contextInfo: { forwardingScore: 508, isForwarded: true, externalAdReply:{ advertiserName: "https://wa.me/559784388524" , mediaType: 0, thumbnail: pperfil, caption:"https://wa.me/559784388524"}}})
+ 		     venom.sendMessage(m.chat, {text: txt, quoted: m, thumbnail: img, contextInfo: { forwardingScore: 999, isForwarded: true, externalAdReply:{ advertiserName: "https://wa.me/5588998204406" , mediaType: 0, thumbnail: pperfil, caption:"https://wa.me/5588998204406"}}})
     		}		
 		        
 
@@ -170,7 +171,7 @@ module.exports = venom = async (venom, m, chatUpdate) => {
         }
         
         
-const mek = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})},message: { "extendedTextMessage": {"text": `VenomBot-md`,"title": "hmm" }}}
+const mek = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})},message: { "extendedTextMessage": {"text": `nezuko-md`,"title": "hmm" }}}
 
         const enviarbutao = (from, text, footer, buttons) => {
             return venom.sendMessage(m.chat, { text: text, footer: footer, templateButtons: buttons, quoted: m })
@@ -319,6 +320,24 @@ break
 	enviar(`usuário se tornou um adm deste grupo`)
 	}
 	break
+	case 'editinfo': {
+                if (!m.isGroup) throw mess.group
+                if (!isBotAdmins) throw mess.botAdmin
+                if (!isAdmins) throw mess.admin
+             if (args[0] === 'open'){
+                await venom.groupSettingUpdate(m.chat, 'unlocked').then((res) => m.reply(`Agora todos podem alterar as informações do grupo.`)).catch((err) => m.reply(jsonformat(err)))
+             } else if (args[0] === 'close'){
+                await venom.groupSettingUpdate(m.chat, 'locked').then((res) => m.reply(`Agora apenas adms podem alterar as informações do grupo.`)).catch((err) => m.reply(jsonformat(err)))
+             } else {
+             let buttons = [
+                        { buttonId: 'editinfo open', buttonText: { displayText: 'abrir' }, type: 1 },
+                        { buttonId: 'editinfo close', buttonText: { displayText: 'fechar' }, type: 1 }
+                    ]
+                    await venom.sendButtonText(m.chat, buttons, `escola uma das opções.`, venom.user.name, m)
+
+            }
+            }
+            break
 case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'tupai':
                 try {
                 let set
@@ -335,7 +354,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 if (/smooth/.test(command)) set = '-filter:v "minterpolate=\'mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120\'"'
                 if (/tupai/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
                 if (/audio/.test(mime)) {
-                m.reply(`adicionando afeito ${command}`)
+                m.reply(`adicionando efeito ${command} no audio, aguarde.`)
                 let media = await venom.downloadAndSaveMediaMessage(quoted)
                 let ran = getRandom('.mp3')
                 exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
@@ -390,6 +409,14 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
 	}
 	
 	break
+	  case 'setdesc': case 'setdesk': {
+                if (!m.isGroup) throw resposta.group
+                if (!isBotAdmins) throw resposta.botAdmin
+                if (!isAdmins) throw resposta.admin
+                if (!text) throw 'Text ?'
+                await venom.groupUpdateDescription(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
+            }
+            break
 	    case 'setname': case 'setsubject': 	case 'mudarnome': case 'mudanome': case 'setnome': {
 	    	    
 		    		
@@ -546,6 +573,8 @@ venomkkk = `
 ┌──⊰ _*GRUPOS*_
 │
 │⊳ ${prefix}join
+│⊳ ${prefix}setdesc
+│⊳ ${prefix}editinfo
 │⊳ ${prefix}promover [@]
 │⊳ ${prefix}rebaixar [@]
 │⊳ ${prefix}banir [@]
@@ -613,7 +642,7 @@ let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/nezuko
                             }, {
                                quickReplyButton: {
                                     displayText: 'velocidade',
-                                    id: 'pinh'
+                                    id: 'ping'
                                 }
                             }, {
                                 quickReplyButton: {
@@ -657,211 +686,6 @@ buttonText: '➥𝑪𝒍𝒊𝒒𝒖𝒆 𝒑𝒂𝒓𝒂 𝒗𝒆𝒓',
 }
 sendListMsg(button.title, button.description, button.buttonText, button.sections)  
 break
-case 'command':
-enviar('𝑬𝒏𝒗𝒊𝒂𝒏𝒅𝒐 𝒍𝒊𝒔𝒕𝒂 𝒅𝒆 𝒊𝒎𝒖𝒏𝒆 𝒃𝒚 𝑽𝒆𝒏𝒐𝒎 𝑴𝒐𝒅𝒔'),
-sender = `${pushname}`
- stod = `${sender}`
- listMsg = {
- buttonText: 'VEJA O MENU',  
- footerText: '_*© criado by Venom Mods*╭々Special Para 々\n┃ ⇛ Skiller ofc\n┃ ⇛ Mhankbarbar \n┃ ⇛ Venom mods┃ ⇛ Iorran\n┃ ⇛ tobi\n┃\n╰ Faça bom uso deste Bot✨',
- description: `𝑶𝒍𝒂💥 ${pushname} 🌟𝑬𝒔𝒄𝒐𝒍𝒉𝒂 𝒐𝒔 𝒊𝒎𝒖𝒏𝒆 𝒅𝒐 𝒗𝒆𝒏𝒐𝒎 𝒂𝒃𝒂𝒊𝒙𝒐}`,
- sections: [
-                     {
-                      "title": `𝑺𝒂𝒍𝒗𝒆😝 ${pushname} - 𝒄𝒍𝒊𝒒𝒖𝒆 𝒑𝒂𝒓𝒂 𝒃𝒂𝒊𝒙𝒂 𝒐 𝒛𝒂𝒑`,
- rows: [                         
-                           {                           
-                             "title": "➥️ꪶꫂ 𝒗𝒌 ͢ ͢ 𝒃𝒍𝒂𝒄𝒌 𝒑𝒊𝒏𝒌 ꫂꫂ", 
-                             "rowId": `${prefix} imune1`
-                           }, 
-                           {
-                             "title": " 🔍canal do venom🔍", 
-                             "rowId": `${prefix} mycanal`
-                           }
-                        ]
-                     }],
- listType: 1
-}
-venom.sendMessage(from, listMsg, MessageType.listMessage, {contextInfo: { mentionedJid: [stod]},quoted:m})
-break 
-case 'imunes' : {
-            enviar(' ☽𝑳𝒊𝒔𝒕𝒂 𝒅𝒆 𝒘𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝒊𝒎𝒖𝒏𝒆 𝒅𝒐 𝑽𝒆𝒏𝒐𝒎☽\n\n🐊𝒊𝒎𝒖𝒏𝒆 {1}🐊\n\n🐊𝒊𝒎𝒖𝒏𝒆 {2}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://www.mediafire.com/download/2sip0b2ghul4v3b\n\n🐊𝒊𝒎𝒖𝒏𝒆 {3}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://www.mediafire.com/download/osakcxrh1y1bv3v\n\n🐊𝒊𝒎𝒖𝒏𝒆 {4}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://www.mediafire.com/download/sfjfx3qriaucgfi\n\n🐊𝒊𝒎𝒖𝒏𝒆 {5}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://www.mediafire.com/download/0q4lt0cgiphyo4s\n\n🐊𝒊𝒎𝒖𝒏𝒆 {6}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://www.mediafire.com/download/5x55oxzc82yzxge\n\n🐊𝒊𝒎𝒖𝒏𝒆 {7}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://mega.nz/file/DmQ3DKhb#mstPuYvkYv2eJmjV1EYIIW8H-6ThzaOCBwV23GPTmgE\n\n🐊𝒊𝒎𝒖𝒏𝒆 {8}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://mega.nz/file/HrpSyCIA#LP9bmsKtQAeOTIPHu0kbLNagO2cE9dEHNrQN9637Lzs\n\n🐊𝒊𝒎𝒖𝒏𝒆 {9}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://mega.nz/file/T2I0kLga#HbXTTbSn0iY4EU1rs2D9qz0m7QPJ8AZiI-L-WHdpm-g\n\n🐊𝒊𝒎𝒖𝒏𝒆 {10}🐊 \n\n ͢ 𝑳𝒊𝒏𝒌: https://mega.nz/file/zn5lTCaL#pV4WTWz1gHBB933xDlzWtbYEYurzqRXJo4B-7kuIZxA🎁𝑬𝒔𝒑𝒆𝒓𝒐 𝒒𝒖𝒆 𝒗𝒐𝒄𝒆𝒔 𝒈𝒐𝒔𝒕𝒆𝒎 𝒅𝒐𝒔 𝒊𝒎𝒖𝒏𝒆𝒔🎁 ')
-            }               
-            case 'ajuda' : {
-            enviar(' 𝑪𝒐𝒎𝒐 𝒄𝒓𝒊𝒂𝒓 𝒔𝒆𝒖 𝒃𝒐𝒕 𝒎𝒖𝒍𝒕𝒊 𝒅𝒆𝒗𝒊𝒄𝒆 𝒂𝒕𝒖𝒂𝒍𝒊𝒛𝒂𝒅𝒐 𝒈𝒓𝒂𝒕𝒊𝒔𝒖𝒔𝒂𝒏𝒅𝒐 𝒖𝒎 𝒃𝒂𝒔𝒆 𝒎𝒅 𝒄𝒐𝒎 𝒎𝒖𝒕𝒊𝒑𝒍𝒐𝒔 𝒂𝒑𝒂𝒓𝒆𝒍𝒉𝒐𝒔 𝒔𝒆𝒎 𝒊𝒏𝒕𝒆𝒓𝒏𝒆𝒕 𝒄𝒐𝒑𝒊𝒆 𝒆 𝒄𝒐𝒍𝒆 𝒏𝒐 𝒕𝒆𝒓𝒎𝒖𝒙 𝒐𝒔 𝒄𝒐𝒎𝒂𝒏𝒅𝒐𝒔 𝒂𝒃𝒂𝒊𝒙𝒐 𝒔𝒆 𝒗𝒄 𝒏𝒖𝒏𝒄𝒂 𝒖𝒔𝒐𝒖 𝒐𝒖 𝒔𝒆 𝒆 𝒔𝒖𝒂 𝒑𝒓𝒊𝒎𝒆𝒊𝒓𝒂 𝒗𝒆𝒛 𝒄𝒐𝒎 𝒃𝒐𝒕\n\n☽𝒄𝒐𝒎𝒂𝒏𝒅𝒐𝒔 𝒅𝒆 𝒊𝒏𝒔𝒕𝒂𝒍𝒂𝒄𝒂𝒐☽\n\n🧧{1}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{} \n\ntermux-setup-storage\n\n🧧{2}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{}\n\napt update\n\n🧧{3}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{}\n\napt upgrade\n\n🧧{4}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{}\n\npkg install git -y\n\n🧧{5}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{}\n\npkg install nodejs -y\n\n🧧{6}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{}\n\npkg install ffmpeg -y\n\n🧧{7}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{}git clone https://github.com/Venom-ofc/VenomBot-md\n\n🧧{8}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{}\n\ncd VenomBot-md\n\n🧧{9}𝑪𝒐𝒎𝒂𝒏𝒅𝒐{}\n\nnode index.js\n\n 📱𝑽𝒐𝒄𝒆 𝒑𝒓𝒆𝒄𝒊𝒔𝒂 𝒕𝒆𝒓 𝒅𝒐𝒊𝒔 𝒄𝒆𝒍𝒖𝒍𝒂𝒓 𝒖𝒎 𝒑𝒂𝒓𝒂 𝒍𝒆𝒓 𝒐 𝒒𝒓 𝒄𝒐𝒅𝒆 𝒒𝒖𝒆 𝒗𝒆𝒊 𝒂𝒑𝒂𝒓𝒆𝒄𝒆 𝒏𝒐 𝒕𝒆𝒓𝒎𝒖𝒙. 𝒏𝒐 𝒘𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝒒𝒖𝒆 𝒅𝒆𝒔𝒆𝒋𝒂 𝒂𝒕𝒊𝒗𝒂𝒓 𝒐 𝒃𝒐𝒕 𝒏𝒂 𝒂𝒃𝒂 𝒂𝒑𝒂𝒓𝒆𝒍𝒉𝒐𝒔 𝒄𝒐𝒏𝒆𝒄𝒕𝒂𝒅𝒐𝒔 𝒗𝒂 𝒏𝒂 𝒂𝒃𝒂 𝒎𝒖𝒍𝒊𝒑𝒍𝒐𝒔 𝒂𝒑𝒂𝒓𝒆𝒍𝒉𝒐𝒔 (𝒃𝒆𝒕𝒂) 𝒆𝒏𝒕𝒓𝒂 𝒆𝒎 𝒎𝒐𝒅𝒐 𝒃𝒆𝒕𝒂 𝒑𝒂𝒓𝒂 𝒏𝒂𝒐𝒅𝒂 𝒆𝒓𝒓𝒐 𝒏𝒂 𝒉𝒐𝒓𝒂 𝒅𝒆 𝒍𝒆𝒓 𝒐 𝑸𝑹 𝒅𝒆𝒑𝒊𝒊𝒔 𝒅𝒊𝒔𝒔𝒐 𝒗𝒐𝒄𝒆 𝒑𝒐𝒅𝒆 𝒍𝒆𝒓 𝒐 𝒒𝒓 𝒕𝒓𝒂𝒏𝒒𝒖𝒊𝒍𝒐 𝒆 𝒑𝒓𝒐𝒏𝒕𝒐 𝑽𝒆𝒏𝒐𝒎𝑩𝒐𝒕-𝒎𝒅 𝒆𝒔𝒕𝒂 𝒂𝒕𝒊𝒗𝒐😊 ' )
-            }            
-            break
-//cases de play
-      
-//enviar botoes
-          case 'imune1':  {
-            	    
-         		    		
-            enviarbutao(m.chat, ` *nome do botao* `, `Selecione abaixo`,  [{ displayText: `💠 Api `, url : `https://mega.nz/file/DmQ3DKhb#mstPuYvkYv2eJmjV1EYIIW8H-6ThzaOCBwV23GPTmgE`},{ quickReplyButton: { displayText: `📥𝑽𝒐𝒍𝒕𝒂 𝒂 𝒍𝒊𝒔𝒕𝒂 𝒅𝒆 𝒊𝒎𝒖𝒏𝒆𝒔📥`, id: `${prefix}case` } }, { quickReplyButton: { displayText: `🌠𝑴𝒆𝒏𝒖 𝒑𝒓𝒊𝒏𝒄𝒊𝒑𝒂𝒍🌠`, id: `${prefix}case` } }])
-            
-            }                        
-            break            
-//𝒄𝒂𝒔𝒆𝒔 𝒅𝒆 𝒍𝒐𝒈𝒐𝒔 𝒆 𝒆𝒅𝒊𝒕 𝒇𝒆𝒊𝒕𝒂 𝒑𝒐𝒓 𝒗𝒆𝒏𝒐𝒎
-case 'edit1': 
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_api.jpg?text.0.text=${teks}&text.0.color=000000&text.0.font.family=Pacifico&text.0.font.weight=600&text.0.background.color=ffffff&text.0.outline.color=ffffff&text.0.outline.width=10&text.0.outline.blur=17`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break
-case 'edit2':
-                    //case by venom       
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis2.jpg?text.0.text=${teks}&text.0.position.gravity=center&text.0.position.x=1%25&text.0.position.y=16%25&text.0.size=80&text.0.color=ff2772&text.0.opacity=67&text.0.font.family=Bangers&text.0.font.style=italic&text.0.background.opacity=50&text.0.outline.width=6`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break
-case 'edit3':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis3.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=59%25&text.0.size=89&text.0.color=000000&text.0.opacity=71&text.0.font.family=Changa%20One&text.0.font.style=italic&text.0.background.opacity=10&text.0.outline.color=ffffff&text.0.outline.width=3`)
-					venom.sendMessage(from, buffer, image, {quoted: m, caption: 'Evolution-bot fez sua edit'})
-					break	
-case 'edit4':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis.jpg?text.0.text=${teks}&text.0.position.gravity=center&text.0.position.x=11%25&text.0.position.y=22%25&text.0.size=20&text.0.color=241b1b&text.0.opacity=33&text.0.font.family=Rock%20Salt&text.0.font.style=italic&text.0.background.opacity=49`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break	
-case 'edit5':
-                   //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis5.jpg?text.0.text=${teks}&text.0.position.gravity=center&text.0.position.x=1%25&text.0.position.y=22%25&text.0.align=left&text.0.size=59&text.0.font.family=Permanent%20Marker&text.0.outline.color=df00ff&text.0.outline.width=2&text.0.outline.blur=18`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break
-case 'edit6':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis6.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.x=1%25&text.0.position.y=50%25&text.0.size=68&text.0.color=464646&text.0.opacity=51&text.0.font.family=Sigmar%20One&text.0.background.opacity=2&text.0.outline.color=ffffff&text.0.outline.width=2&text.0.outline.opacity=61`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break	
-case 'edit7':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis7.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.x=1%25&text.0.position.y=58%25&text.0.size=69&text.0.color=00ffea&text.0.opacity=37&text.0.font.family=Bangers&text.0.background.opacity=77&text.0.outline.color=ffffff&text.0.outline.width=2&text.0.outline.blur=20`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break
-case 'edit8':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					//venomk = await getvenomk(`https://lollityp.sirv.com/venom_apis.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=47%25&text.0.size=99&text.0.color=ff0000&text.0.opacity=50&text.0.font.family=Cookie&text.0.font.style=italic&text.0.background.opacity=92&text.0.outline.width=23&text.0.outline.blur=24&text.0.outline.opacity=87`)
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis.jpg?w=640&h=640&text.0.text=Venom&text.0.position.gravity=north&text.0.position.y=53%25&text.0.size=96&text.0.color=ff0000&text.0.opacity=46&text.0.font.family=Shadows%20Into%20Light&text.0.font.style=italic&text.0.background.opacity=70&text.0.outline.width=9&text.0.outline.blur=52`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break																											
-case 'edit9':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis9.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=50%25&text.0.size=68&text.0.color=ffffff&text.0.opacity=61&text.0.font.family=Tangerine&text.0.font.style=italic&text.0.background.opacity=61&text.0.outline.color=ff6f00&text.0.outline.width=9`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break
-case 'edit10':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis10.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=62%25&text.0.size=63&text.0.color=004124&text.0.opacity=99&text.0.font.family=Permanent%20Marker&text.0.font.style=italic&text.0.background.color=feff00&text.0.outline.color=ffe8a3&text.0.outline.width=9&text.0.outline.blur=21`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break
-case 'edit11':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis11.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=60%25&text.0.size=64&text.0.color=0071ff&text.0.font.family=Old%20Standard%20TT&text.0.font.style=italic&text.0.background.opacity=55&text.0.outline.color=00d0ff&text.0.outline.width=19&text.0.outline.blur=30`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break	
-case 'edit12':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis12.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=65%25&text.0.size=61&text.0.color=ff00e6&text.0.opacity=32&text.0.font.family=Chewy&text.0.font.style=italic&text.0.outline.width=6`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break	
-case 'edit13':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis13.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=63%25&text.0.size=68&text.0.color=ffffff&text.0.opacity=92&text.0.font.family=Permanent%20Marker&text.0.font.weight=800&text.0.outline.color=5dff00&text.0.outline.width=13&text.0.outline.blur=21`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break		
-case 'edit14':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis14.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=68%25&text.0.size=60&text.0.color=ffffff&text.0.font.family=Sigmar%20One&text.0.font.style=italic&text.0.background.opacity=17&text.0.outline.color=a99cff&text.0.outline.width=9&text.0.outline.blur=16`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break	
-case 'edit15':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis15.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=62%25&text.0.size=63&text.0.color=000000&text.0.font.family=Audiowide&text.0.font.style=italic&text.0.background.opacity=15&text.0.outline.color=ffffff&text.0.outline.width=9&text.0.outline.blur=33`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-					break	
-case 'edit16':
-                    //case by venom
-					if (args.length < 1) return enviar('erro')
-					teks = body.slice(7)
-					if (teks.length > 10) return enviar('O texto é longo, até 10 caracteres')
-					enviar('*Estou fazendo, se der erro tente novamente ✓*')
-					venomk = await getBuffer(`https://lollityp.sirv.com/venom_apis16.jpg?text.0.text=${teks}&text.0.position.gravity=north&text.0.position.y=58%25&text.0.size=99&text.0.color=fffefe&text.0.font.family=Permanent%20Marker&text.0.background.color=000000&text.0.outline.color=000000&text.0.outline.width=19&text.0.outline.blur=66`)
-					venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-			                break	
-case 'edit17':
- //case by venom
-if (args.length < 1) return enviar('Qual o nome?')
-  enviar('fazendo edit aguarde fofs🍭💓')
-  teks = body.slice(7)
-anu = await fetchJson(`https://venom-apis.herokuapp.com/api/textmaker/alam?text=${teks}&theme=flower&=venom`)
-venomk = await getBuffer(anu.result)
-venom.sendMessage(m.chat, { image: venomk }, { quoted: m })
-break
-case 'edit18':              
-              	    if (args.length < 1) return enviar('teksnya mana Tod?')
-                    teks = `${body.slice(8)}`
-                    if (teks.length > 10) return venom.sendMessage(from, 'Teksnya kepanjangan Bambank', text, {quoted: m})
-                    venomk = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${teks}`, {method: 'get'})
-                    venom.sendMessage(from, venomk, image, {quoted: m, caption: `${teks}`})			     	
-					break             
 //cases de fotos
 case 'nick': case 'styletext': {
 	      //  if (!isPremium && global.db.users[m.sender].limit < 1) return m.reply(resposta.endLimit) // respon ketika limit habis
@@ -878,7 +702,7 @@ case 'nick': case 'styletext': {
 	    break
 case 'anime': {
 enviar(resposta.aguarde)
-                if (!text) throw 'Digite o qu vc esta atrais amigo'
+                if (!text) throw 'Digite o nome do anime'
 		let { wallpaper } = require('./lib/scraper')
                 anu = await wallpaper(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
@@ -902,13 +726,6 @@ case 'pinterest': {
                 result = anu[Math.floor(Math.random() * anu.length)]
                 venom.sendMessage(m.chat, { image: { url: result }, caption: 'Url : '+result }, { quoted: m })
             }
-case 'test':
-if (args.length < 1) return enviar('Qual o nome?')
-  enviar('teste do venomkkkk?')
-  textokkk = body.slice(7)
-anu = await fetchJson(`${venomapis}/textmaker/alam?text=${textokkk}&theme=flower&apikey=${keyvenom}`)
-cafe = await getBuffer(anu.result)
-venom.sendMessage(from, cafe, image, {quoted: m, caption:'🔮Feitinha'})
 break
 case 'play': case 'ytplay': {
                 if (!text) throw `Exemplo: ${prefix + command} pandora funk`
@@ -985,15 +802,7 @@ enviar(`
 console.log(color('COMANDO NAO REGISTRADO', 'green'))
 }            
 
-            if (budy.startsWith('bot')) {
-                     enviar('ola humano, oq deseja?')
-                     console.log(color('AUTO RESPOSTA', 'blue'))
-
-              
-           
-                }
-                }                                     
-     
+                                                               
  } catch (err) {
       m.reply(util.format(err))
     }
