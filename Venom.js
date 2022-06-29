@@ -672,24 +672,29 @@ let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/nezuko
                         hydratedTemplate: {
                             imageMessage: message.imageMessage,
                             hydratedContentText: venomkkk,
-                            hydratedButtons: [{                         
+                            hydratedButtons: [{                  
+                            	urlButton: {
+                                    displayText: 'Grupo Ofc',
+                                    url: `https://chat.whatsapp.com/LvOvnyL173FEzdKMZZx7q4`
+                                }
+                            }, {
                                 callButton: {
-                                    displayText: 'numero do criador',
+                                    displayText: 'Ligue-Me',
                                     phoneNumber: '+55 88 99820-4406'
                                 }
                             }, {
                                quickReplyButton: {
-                                    displayText: 'velocidade',
+                                    displayText: 'Velocidade',
                                     id: 'ping'
                                 }
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'criador',
+                                    displayText: 'Criador',
                                     id: 'dono'
                                 }  
                             }, {
                                 quickReplyButton: {
-                                    displayText: 'comprar o bot',
+                                    displayText: 'Comprar O Bot',
                                     id: 'comprabot'
                                 }
                             }]
@@ -700,30 +705,7 @@ let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/nezuko
             }
             
             break         
-//𝒄𝒂𝒔𝒆 𝒅𝒆 𝒔𝒆𝒏𝒅 𝒍𝒊𝒔𝒕 𝒎𝒆𝒏𝒖            
-case 'menu2':
-const button = {
-buttonText: '➥𝑪𝒍𝒊𝒒𝒖𝒆 𝒑𝒂𝒓𝒂 𝒗𝒆𝒓',
- footerText: '© 𝑽𝒆𝒏𝒐𝒎𝑩𝒐𝒕-𝑴𝒅',
- description: `✨ *_bem vindo(a) ao menu ${pushname}_* ✨`,
- sections: [
-                     {
-                      "title": `🌠𝑰𝒎𝒖𝒏𝒆𝒔 𝒃𝒚 𝑽𝒆𝒏𝒐𝒎 𝑴𝒐𝒅𝒔🌠`,
- rows: [
-                          {
-                              "title": "➥️ꪶꫂ 𝒗𝒌 ͢ ͢ 𝒃𝒍𝒂𝒄𝒌 𝒑𝒊𝒏𝒌 ꫂꫂ",
-                              "rowId": `${prefix} imune1`                        
-                           },
-                           {
-                              "title": "➥",
-                              "rowId": "comando"
-                           }
-                        ]
-                     }],
- listType: 1
-}
-sendListMsg(button.title, button.description, button.buttonText, button.sections)  
-break
+
 //cases de fotos
 case 'nick': case 'styletext': {
 	      //  if (!isPremium && global.db.users[m.sender].limit < 1) return m.reply(resposta.endLimit) // respon ketika limit habis
@@ -762,7 +744,17 @@ case 'pinterest': {
 		let { pinterest } = require('./lib/scraper')
                 anu = await pinterest(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
-                venom.sendMessage(m.chat, { image: { url: result }, caption: 'Url : '+result }, { quoted: m })
+                let buttons = [
+                   {buttonId: `pinterest`, buttonText: {displayText: '🌠Proxima Imagem🌠'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: result },
+                    caption: 'Url: '+result,
+                    footer: `nezuko-md`,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                venom.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
 break
 case 'play': case 'ytplay': {
