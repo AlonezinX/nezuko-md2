@@ -369,6 +369,41 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 m.reply(e)
                 }
                 break	
+                case 'gimage': {
+        if (!text) throw `Example : ${prefix + command} kaori cicak`
+        let gis = require('g-i-s')
+        gis(text, async (error, result) => {
+        n = result
+        images = n[Math.floor(Math.random() * n.length)].url
+        let buttons = [
+                    {buttonId: `gimage ${text}`, buttonText: {displayText: 'Next Image'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: images },
+                    caption: `*-------「 GIMAGE SEARCH 」-------*
+🤠 *Query* : ${text}
+🔗 *Media Url* : ${images}`,
+                    footer: venom.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                venom.sendMessage(m.chat, buttonMessage, { quoted: m })
+        })
+        }
+        break
+        case 'delete': case 'del': {
+                if (!m.quoted) throw false
+                let { chat, fromMe, id, isBaileys } = m.quoted
+                if (!isBaileys) throw 'A mensagem não foi enviada pelo bot'
+                venom.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+            }
+            break
+            case 'listonline': case 'liston': {
+                    let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
+                    let online = [...Object.keys(store.presences[id]), botNumber]
+                    venom.sendText(m.chat, 'List Online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+             }
+             break
               case 'emojimix': {
 	        if (!text) return replay(`Exemplo : ${prefix + command} 😡+🤔`)
 		let [emoji1, emoji2] = text.split`+`
@@ -501,7 +536,7 @@ break
             break	    
              case 'togif': {
                 if (!quoted) return reply(`Marque a figurinha`)
-                if (!/webp/.test(mime)) return reply(`Responder adesivo com legenda *${prefix + command}*`)
+                if (!/webp/.test(mime)) return enviar(`Responder adesivo com legenda *${prefix + command}*`)
                 reply(responder.aguarde)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await venom.downloadAndSaveMediaMessage(quoted)
@@ -574,7 +609,9 @@ venomkkk = `
 │
 │⊳ ${prefix}join
 │⊳ ${prefix}setdesc
-│⊳ ${prefix}editinfo
+│⊳ ${prefix}editinfo [opção]
+│⊳ ${prefix}delete
+│⊳ ${prefix}listonline
 │⊳ ${prefix}promover [@]
 │⊳ ${prefix}rebaixar [@]
 │⊳ ${prefix}banir [@]
@@ -604,6 +641,7 @@ venomkkk = `
 │⊳ ${prefix}play (off)
 │⊳ ${prefix}metadinha
 │⊳ ${prefix}nick
+│⊳ ${prefix}gimage
 │
 ├──⊰ _*ALTERADORES*_
 │
