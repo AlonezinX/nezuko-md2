@@ -25,7 +25,7 @@ const { smsg, getGroupAdmins, formatp, tanggal, formatDate, getTime, isUrl, slee
 const nomedobot =  'NEZUKO-MD' //nom do bot
 const prefa = ['/','!','.','*','#','$'] //prefixo
 const  sp = '⭔'
-const dono = ['5588998204406','5588998204406'] //dono
+const dono = ['558898204406','558898204406'] //dono
 const venomapis = 'https://nezuko-rest-api.herokuapp.com/docs' 
 const apikey  = [ 'alonezxkk' ]
 
@@ -53,7 +53,7 @@ const mentions = (teks, memberr, id) => {
        (id == null || id == undefined || id == false) ? venom.sendMessage(m.chat, {text: teks.trim(), mentions: memberr}) : venom.sendMessage(m.chat, {text: teks.trim(), mentions: memberr})
         }
         const replyc = (txt) => {
- 		      return venom.sendMessage('5588998204406@s.whatsapp.net', 'bot on ', { text: txt }, { quoted: m })
+ 		      return venom.sendMessage('558898204406@s.whatsapp.net', 'bot on ', { text: txt }, { quoted: m })
      		}
 //EXPORTA MODULOS DOIDEX E FUNCOES
 module.exports = venom = async (venom, m, chatUpdate) => {
@@ -147,7 +147,7 @@ module.exports = venom = async (venom, m, chatUpdate) => {
 		const pperfil = await getBuffer(pporang)
 		//enviar
 		const enviar = (txt) => {
- 		     venom.sendMessage(m.chat, {text: txt, quoted: m, thumbnail: img, contextInfo: { forwardingScore: 999, isForwarded: true, externalAdReply:{ advertiserName: "https://wa.me/5588998204406" , mediaType: 0, thumbnail: pperfil, caption:"https://wa.me/5588998204406"}}})
+ 		     venom.sendMessage(m.chat, {text: txt, quoted: m, thumbnail: img, contextInfo: { forwardingScore: 999, isForwarded: true, externalAdReply:{ advertiserName: "https://wa.me/558898204406" , mediaType: 0, thumbnail: pperfil, caption:"https://wa.me/558898204406"}}})
     		}		
 		        
 
@@ -225,7 +225,7 @@ await venom.relayMessage(m.chat, list, {messageId: m.key.id})
         switch(command) {
 
 	    case 'comprabot': {	    
-                enviar(`Para comprar o bot, fale com o meu criador:\n\nhttps://wa.me/5588998204406?text=quero+comprar+a+nezukobot`)
+                enviar(`Para comprar o bot, fale com o meu criador:\n\nhttps://wa.me/558898204406?text=quero+comprar+a+nezukobot`)
             }
             
             break
@@ -333,7 +333,7 @@ break
                         { buttonId: 'editinfo open', buttonText: { displayText: 'abrir' }, type: 1 },
                         { buttonId: 'editinfo close', buttonText: { displayText: 'fechar' }, type: 1 }
                     ]
-                    await enviarbutao(m.chat, buttons, `escola uma das opções.`, venom.user.name, m)
+                    await venom.sendButtonText(m.chat, buttons, `escolha uma das opções.`, venom.user.name, m)
 
             }
             }
@@ -376,7 +376,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
         n = result
         images = n[Math.floor(Math.random() * n.length)].url
         let buttons = [
-                    {buttonId: `gimage ${text}`, buttonText: {displayText: 'Proxima inagem'}, type: 1}
+                    {buttonId: `gimage ${text}`, buttonText: {displayText: 'Proxima imagem'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: images },
@@ -405,7 +405,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
              }
              break
               case 'emojimix': {
-	        if (!text) return reply(`Exemplo : ${prefix + command} 😡+🤔`)
+	        if (!text) return replay(`Exemplo : ${prefix + command} 😡+🤔`)
 		let [emoji1, emoji2] = text.split`+`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 		for (let res of anu.results) {
@@ -535,9 +535,9 @@ break
             
             break	    
              case 'togif': {
-                if (!quoted) return enviar(`Marque a figurinha`)
+                if (!quoted) return reply(`Marque a figurinha`)
                 if (!/webp/.test(mime)) return enviar(`Responder adesivo com legenda *${prefix + command}*`)
-                enviar(responder.aguarde)
+                reply(resposta.aguarde)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await venom.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
@@ -575,7 +575,7 @@ break
                     + 'N:;Alone.;;;'
                     + 'FN:Alone.\n' // nome todo
                     + 'ORG:Alone;\n' // organização
-                    + 'TEL;type=CELL;type=VOICE;waid=5588998204406:+55 88 99820-4406\n' // WhatsApp ID + número
+                    + 'TEL;type=CELL;type=VOICE;waid=558898204406:+55 88 9820-4406\n' // WhatsApp ID + número
                     + 'END:VCARD' // finalização
                 venom.sendMessage(m.chat, { contacts: { displayName: 'The AloneX Ofc.', contacts: [{ vcard }] } }, { quoted: m })
             }
