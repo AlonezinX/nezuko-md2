@@ -321,9 +321,9 @@ break
 	}
 	break
 	case 'editinfo': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw resposta.group
+                if (!isBotGroupAdmins) throw resposta.botAdmin
+                if (!isGroupAdmins) throw resposta.admin
              if (args[0] === 'open'){
                 await venom.groupSettingUpdate(m.chat, 'unlocked').then((res) => m.reply(`Agora todos podem alterar as informações do grupo.`)).catch((err) => m.reply(jsonformat(err)))
              } else if (args[0] === 'close'){
@@ -370,19 +370,19 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 }
                 break	
                 case 'gimage': {
-        if (!text) throw `Example : ${prefix + command} kaori cicak`
+        if (!text) throw `Exemplo : ${prefix + command} naruto`
         let gis = require('g-i-s')
         gis(text, async (error, result) => {
         n = result
         images = n[Math.floor(Math.random() * n.length)].url
         let buttons = [
-                    {buttonId: `gimage ${text}`, buttonText: {displayText: 'Next Image'}, type: 1}
+                    {buttonId: `gimage ${text}`, buttonText: {displayText: 'Proxima inagem'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: images },
                     caption: `*-------「 GIMAGE SEARCH 」-------*
-🤠 *Query* : ${text}
-🔗 *Media Url* : ${images}`,
+🤠 *pedido* : ${text}
+🔗 *url* : ${images}`,
                     footer: venom.user.name,
                     buttons: buttons,
                     headerType: 4
@@ -401,7 +401,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
             case 'listonline': case 'liston': {
                     let id = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : m.chat
                     let online = [...Object.keys(store.presences[id]), botNumber]
-                    venom.sendText(m.chat, 'List Online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
+                    venom.sendText(m.chat, 'Lista de membros online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
              }
              break
               case 'emojimix': {
@@ -446,10 +446,10 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
 	break
 	  case 'setdesc': case 'setdesk': {
                 if (!m.isGroup) throw resposta.group
-                if (!isBotAdmins) throw resposta.botAdmin
-                if (!isAdmins) throw resposta.admin
+                if (!isBotGroupAdmins) throw resposta.botAdmin
+                if (!isGroupAdmins) throw resposta.admin
                 if (!text) throw 'Text ?'
-                await venom.groupUpdateDescription(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
+                await venom.groupUpdateDescription(m.chat, text).then((res) => m.reply(`descrição do grupo alterada com sucesso!!`)).catch((err) => m.reply(jsonformat(err)))
             }
             break
 	    case 'setname': case 'setsubject': 	case 'mudarnome': case 'mudanome': case 'setnome': {
