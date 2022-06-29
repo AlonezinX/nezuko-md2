@@ -85,7 +85,8 @@ module.exports = venom = async (venom, m, chatUpdate) => {
     aguarde: '⌛Aguarde enquanto isso tome um café☕',
     erro: 'acorreu um erro tente dnv🧑‍🔧',
     marqueoarquivo: 'marque o arquivo é use:',
-    marquesticker: 'marque a figurinha'
+    marquesticker: 'marque a figurinha',
+    convertmsgimg: 'figurinha convertida para foto'
     
 }
         //DEFINICOES DE GRUPO
@@ -216,8 +217,7 @@ await venom.relayMessage(m.chat, list, {messageId: m.key.id})
         }        
                      
       
-       
-		venom.sendReadReceipt(m.chat, m.sender, [m.key.id])
+       		
 		venom.sendPresenceUpdate('available', m.chat)
 		
 
@@ -466,7 +466,7 @@ break
                     fs.unlinkSync(media)
                     if (err) throw err
                     let buffer = fs.readFileSync(ran)
-                    venom.sendMessage(m.chat, { image: buffer, caption: mess.convertmsgimg }, { quoted: m })
+                    venom.sendMessage(m.chat, { image: buffer, caption: resposta.convertmsgimg }, { quoted: m })
                     fs.unlinkSync(ran)
                 })
             }
@@ -593,14 +593,13 @@ venomkkk = `
 │
 ├──⊰ _*CRIADOR*_
 │
-│⊳ ${prefix}reagir [emoji]
 │⊳ ${prefix}sair
 │⊳ ${prefix}setpp
 │⊳ ${prefix}bloquear
 │⊳ ${prefix}desbloquear
 │
 └──⊰ _*${nomedobot}*_`
-let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/Venom-Md.jpg') }, { upload: venom.waUploadToServer })
+let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/nezuko.jpg') }, { upload: venom.waUploadToServer })
                 const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                     templateMessage: {
                         hydratedTemplate: {
@@ -865,7 +864,7 @@ case 'edit18':
 					break             
 //cases de fotos
 case 'nick': case 'styletext': {
-	      //  if (!isPremium && global.db.users[m.sender].limit < 1) return m.reply(mess.endLimit) // respon ketika limit habis
+	      //  if (!isPremium && global.db.users[m.sender].limit < 1) return m.reply(resposta.endLimit) // respon ketika limit habis
 		//db.users[m.sender].limit -= 1 // -1 limit
 		let { styletext } = require('./lib/scraper')
 		if (!text) throw 'Digite seu nick!'
@@ -889,7 +888,7 @@ enviar(resposta.aguarde)
                 let buttonMessage = {
                     image: { url: result.image[0] },
                     caption: `⭔ titulo : ${result.title}\n⭔ categoria : ${result.type}\n⭔ detalhe : ${result.source}\n⭔ Url : ${result.image[2] || result.image[1] || result.image[0]}`,
-                    footer: `VenomBot-md`,
+                    footer: `nezuko-md`,
                     buttons: buttons,
                     headerType: 4
                 }
