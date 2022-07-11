@@ -47,18 +47,19 @@ async function startVenom() {
 //    
 venom.ev.on('group-participants.update', async (anu) => {
         console.log(anu)
+        //if (!wlcm.includes(anu.id)) return //remove forwad slashes to make it welcome on off
         try {
             let metadata = await venom.groupMetadata(anu.id)
             let participants = anu.participants
             for (let num of participants) {
-                
+                // Get Profile Picture User
                 try {
                     ppuser = await venom.profilePictureUrl(num, 'image')
                 } catch {
                     ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
 
-                
+                // Get Profile Picture Group
                 try {
                     ppgroup = await venom.profilePictureUrl(anu.id, 'image')
                 } catch {
@@ -66,15 +67,82 @@ venom.ev.on('group-participants.update', async (anu) => {
                 }
 
                 if (anu.action == 'add') {
-                    venom.sendMessage(anu.id, { image: { url: ppuser }, contextInfo: { mentionedJid: [num] }, caption: `Bem vindo ao grupo ${metadata.subject} @${num.split("@")[0]}` })
+                const buffer = await getBuffer(ppuser)
+                let xeonName = num
+                const xtime = moment.tz('America/Sao_Paulo').format('HH:mm:ss')
+	            const xdate = moment.tz('America/Sao_Paulo').format('DD/MM/YYYY')
+	            const xmembers = metadata.participants.length
+                let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'NEZUKO-MD', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                xeonbody = `
+Olá humano @${xeonName.split("@")[0]}
+✑Bem vindo ao gp: ${metadata.subject}
+✑Numero de membros: ${xmembers}th
+✑Data & Hora: ${xtime} ${xdate}`
+   //if you copy the code value,
+   //dont forget to put my name(Xeon) as credit
+   //you fail to put, i sue you for sure!
+let buttons = [
+{buttonId: `wkwwk`, buttonText: {displayText: 'Bem Vindo👋'}, type: 1}
+]
+let buttonMessage = {
+document: fs.readFileSync('./lib/nezuko.jpg'),
+mimetype: docs,
+jpegThumbnail:buffer,
+mentions: [num],
+fileName: `${metadata.subject}`,
+fileLength: 99999999999999,
+caption: xeonbody,
+footer: `NEZUKO-MD`,
+buttons: buttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title: `The AloneX Ofc`,
+body: `Não se esqueça de ler a descrição do grupo.`,
+mediaType:2,
+thumbnail: buffer,
+sourceUrl: `https://nezuko-rest-apis.herokuapp.com/docs`,
+mediaUrl: `https://nezuko-rest-apis.herokuapp.com/docs`
+}}
+}
+venom.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
                 } else if (anu.action == 'remove') {
-                    venom.sendMessage(anu.id, { image: { url: ppuser }, contextInfo: { mentionedJid: [num] }, caption: `😝 Adeus seu fimose @${num.split("@")[0]} perdemos mais um fimose do grupo ${metadata.subject}` })
-                }
-            }
-        } catch (err) {
-            console.log(err)
-        }
-    })
+                	const buffer = await getBuffer(ppuser)
+                    const xeontime = moment.tz('America/Sao_Paulo').format('HH:mm:ss')
+	                const xeondate = moment.tz('America/Sao_Paulo').format('DD/MM/YYYY')
+                	let xeonName = num
+                    const xeonmembers = metadata.participants.length
+                    let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'NEZUKO-MD', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                    xeonbody = `
+Adeus @${xeonName.split("@")[0]}  」
+✑Saiu do gp: ${metadata.subject}
+✑Membros restantes: ${xeonmembers}th
+✑Dia & Hora: ${xeontime} ${xeondate}`
+      //if you copy the code value,
+   //dont forget to put my name(Xeon) as credit
+   //you fail to put, i sue you for sure!
+let buttons = [
+{buttonId: `wkwkwk`, buttonText: {displayText: 'Adeus👋'}, type: 1}
+]
+let buttonMessage = {
+document: fs.readFileSync('./lib/nezuko.jpg'),
+mimetype: docs,
+jpegThumbnail:buffer,
+mentions: [num],
+fileName: `${metadata.subject}`,
+fileLength: 99999999999999,
+caption: xeonbody,
+footer: `NEZUKO-MD`,
+buttons: buttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title: `The AloneX Ofc`,
+body: `adeus amigo(a)`,
+mediaType:2,
+thumbnail: buffer,
+sourceUrl: `https://nezuko-rest-apis.herokuapp.com/docs`,
+mediaUrl: `https://nezuko-rest-apis.herokuapp.com/docs`
+}}
+}
 	    
 
 venom.public = true
