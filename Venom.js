@@ -28,6 +28,7 @@ const  sp = '⭔'
 const dono = ['558898204406','558898204406'] //dono
 const venomapis = 'https://nezuko-rest-api.herokuapp.com/docs' 
 const apikey  = [ 'alonezxkk' ]
+wlcm = []
 
 APIs = {
 	zenz: 'https://nezuko-rest-api.herokuapp.com/docs',
