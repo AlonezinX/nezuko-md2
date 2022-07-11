@@ -64,8 +64,8 @@ module.exports = venom = async (venom, m, chatUpdate) => {
         const isCmd = body.startsWith(prefix)
         const from = m.key.remoteJid
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
-      		const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss')
-      		const args = body.trim().split(/ +/).slice(1)
+        const time = moment.tz('America/Sao_Paulo').format('DD/MM HH:mm:ss')
+        const args = body.trim().split(/ +/).slice(1)
         const pushname = m.pushName || "sem nome"
         const isCreator = [venom.user.id, ...dono].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == venom.user.id ? true : false
@@ -91,13 +91,14 @@ module.exports = venom = async (venom, m, chatUpdate) => {
     
 }
         //DEFINICOES DE GRUPO
-     const groupMetadata = m.isGroup ? await venom.groupMetadata(m.chat) : ''
+    const groupMetadata = m.isGroup ? await venom.groupMetadata(m.chat) : ''
 	const groupName = m.isGroup ? groupMetadata.subject : ''
 	const groupId = m.isGroup ? groupMetadata.id : ''
 	const groupMembers = m.isGroup ? groupMetadata.participants : ''
 	const groupAdmins = m.isGroup ? getGroupAdmins(groupMembers) : ''
 	const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 	const isGroupAdmins = groupAdmins.includes(m.sender) || false
+	const welcm = m.isGroup ? wlcm.includes(from) : true
 	
 
 //COLOUE SEU NUMERO
@@ -265,7 +266,6 @@ let teks = `══ *👥membros!* ══
             }
             }
             break            
-break
             case 'join': case 'entrar': case 'entrargp': case 'aceitarconvite': case 'joingp': {
             	    
 		    		
@@ -405,7 +405,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
              }
              break
               case 'emojimix': {
-	        if (!text) return replay(`Exemplo : ${prefix + command} 😡+🤔`)
+	        if (!text) return m.reply(`Exemplo : ${prefix + command} 😡+🤔`)
 		let [emoji1, emoji2] = text.split`+`
 		let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 		for (let res of anu.results) {
@@ -599,6 +599,28 @@ break
                 venom.sendMessage(m.chat, buttonMessage, { quoted: m })
             }            
             break
+            case 'welcome': {
+if (!m.isGroup) return m.reply(resposta.group)
+if (!isBotGroupAdmins) return m.reply(resposta.botAdmin)
+if (!isGroupAdmins && !isCreator) return m.reply(resposta.admin)
+if (args[0] === "on") {
+if (welcm) return m.reply('Já Esta Ativado.')
+wlcm.push(from)
+m.reply('Sucesso ao ativar a mensagem de boas-vindas neste grupo')
+} else if (args[0] === "off") {
+if (!welcm) return m.reply('Já desativado')
+let off = wlcm.indexOf(from)
+wlcm.splice(off, 1)
+m.reply('Sucesso ao desativar a mensagem de boas-vindas neste grupo')
+} else {
+  let buttonswlcm = [
+  { buttonId: `${command} on`, buttonText: { displayText: 'Ativar' }, type: 1 },
+  { buttonId: `${command} off`, buttonText: { displayText: 'Desativar' }, type: 1 }
+  ]
+  await venom.sendButtonText(m.chat, buttonswlcm, `Clique no botão abaixo\n\nAtivar para ativar\nDesativar para desativar`, `NEZUKO-MD`, m)
+  }
+  }
+  break
 //𝒄𝒂𝒔𝒆𝒔 𝒅𝒆 𝒎𝒆𝒏𝒖 𝒅𝒐 𝒃𝒐𝒕            
             
 case 'menu': {
