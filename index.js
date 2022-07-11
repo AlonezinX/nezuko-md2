@@ -18,6 +18,14 @@ const res = JSON.parse(fs.readFileSync('./res/data.json'))
 const { smsg, isUrl, generateMessageTag, getBuffer, getRandom } = require('./lib/myfunc')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 
+doc1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+doc2 = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+doc3 = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+doc4 = 'application/zip'
+doc5 = 'application/pdf'
+doc6 = 'application/vnd.android.package-archive'
+
+
 
 //iniciar atividades de conexao do bot
 async function startVenom() {
@@ -45,6 +53,14 @@ async function startVenom() {
         }
     })
 //    
+
+function pickRandom(list) {
+return list[Math.floor(list.length * Math.random())]
+}
+//document randomizer
+let documents = [doc1,doc2,doc3,doc4,doc5,doc6]
+let docs = pickRandom(documents)
+
 venom.ev.on('group-participants.update', async (anu) => {
         console.log(anu)
         //if (!wlcm.includes(anu.id)) return //remove forwad slashes to make it welcome on off
@@ -113,7 +129,7 @@ venom.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
                     const xeonmembers = metadata.participants.length
                     let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: buffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'NEZUKO-MD', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
                     xeonbody = `
-Adeus @${xeonName.split("@")[0]}  」
+Adeus @${xeonName.split("@")[0]}
 ✑Saiu do gp: ${metadata.subject}
 ✑Membros restantes: ${xeonmembers}th
 ✑Dia & Hora: ${xeontime} ${xeondate}`
