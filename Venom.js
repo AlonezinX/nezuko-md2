@@ -58,7 +58,7 @@ const mentions = (teks, memberr, id) => {
  		      return venom.sendMessage('558898204406@s.whatsapp.net', 'bot on ', { text: txt }, { quoted: m })
      		}
 //EXPORTA MODULOS DOIDEX E FUNCOES
-module.exports = venom = async (venom, m, chatUpdate) => {
+module.exports = venom = async (venom, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? m.message.buttonsResponseMessage.selectedButtonId : ''
         var budy = (typeof m.text == 'string' ? m.text : '')
@@ -209,7 +209,7 @@ await venom.relayMessage(m.chat, list, {messageId: m.key.id})
 if (AntiLinkAll)
    if (budy.includes("https://")){
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Link Detectado9 」\`\`\`\n\nO administrador enviou um link, o administrador é livre para enviar qualquer link😇`
+bvl = `\`\`\`「 Link Detectado 」\`\`\`\n\nO administrador enviou um link, o administrador é livre para enviar qualquer link😇`
 if (isGroupAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
 if (isCreator) return m.reply(bvl)
@@ -225,6 +225,72 @@ const reactionMessage = {
                         key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
                     }
                 }
+                
+//TicTacToe
+this.game = this.game ? this.game : {}
+let room = Object.values(this.game).find(room => room.id && room.game && room.state && room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender) && room.state == 'JOGANDO')
+if (room) {
+let ok
+let isWin = !1
+let isTie = !1
+let isSurrender = !1
+// reply(`[DEBUG]\n${parseInt(m.text)}`)
+if (!/^([1-9]|(me)?giveup|surr?ender|off|skip|surrender)$/i.test(m.text)) return
+isSurrender = !/^[1-9]$/.test(m.text)
+if (m.sender !== room.game.currentTurn) { //sender
+if (!isSurrender) return !0
+}
+if (!isSurrender && 1 > (ok = room.game.turn(m.sender === room.game.playerO, parseInt(m.text) - 1))) {
+reply({
+'-3': 'O jogo terminou',
+'-2': 'Invalido',
+'-1': 'Posição invalida',
+0: 'Posição invalida',
+}[ok])
+return !0
+}
+if (m.sender === room.game.winner) isWin = true
+else if (room.game.board === 511) isTie = true
+let arr = room.game.render().map(v => {
+return {
+X: '❌',
+O: '⭕',
+1: '1️⃣',
+2: '2️⃣',
+3: '3️⃣',
+4: '4️⃣',
+5: '5️⃣',
+6: '6️⃣',
+7: '7️⃣',
+8: '8️⃣',
+9: '9️⃣',
+}[v]
+})
+if (isSurrender) {
+room.game._currentTurn = m.sender === room.game.playerX
+isWin = true
+}
+let winner = isSurrender ? room.game.currentTurn : room.game.winner
+let str = `     「 Tictactoe Game 」
+Room ID: ${room.id}
+
+${arr.slice(0, 3).join('')}
+${arr.slice(3, 6).join('')}
+${arr.slice(6).join('')}
+
+${isWin ? `@${winner.split('@')[0]} Venceu!` : isTie ? `Fim de jogo.` : `Virar ${['❌', '⭕'][1 * room.game._currentTurn]} (@${room.game.currentTurn.split('@')[0]})`}
+❌: @${room.game.playerX.split('@')[0]}
+⭕: @${room.game.playerO.split('@')[0]}
+
+Digite *Surrender* para se render e admitir a derrota`
+if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat)
+room[room.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
+if (room.x !== room.o) await venom.sendText(room.x, str, m, { mentions: parseMention(str) } )
+await venom.sendText(room.o, str, m, { mentions: parseMention(str) } )
+if (isTie || isWin) {
+delete this.game[room.id]
+}
+}                
 
 //IA
 
@@ -343,6 +409,70 @@ let teks = `══ *👥membros!* ══
 	enviar(`usuário se tornou um adm deste grupo`)
 	}
 	break
+	case 'ttc': case 'ttt': case 'tictactoe': {
+let TicTacToe = require("./lib/tictactoe")
+this.game = this.game ? this.game : {}
+if (Object.values(this.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) return m.reply('Você ainda está no jogo')
+let room = Object.values(this.game).find(room => room.state === 'ESPERA' && (args.join(" ") ? room.name === args.join(" ") : true))
+if (room) {
+m.reply('Parceiro encontrado!')
+room.o = m.chat
+room.game.playerO = m.sender
+room.state = 'JOGANDO'
+let arr = room.game.render().map(v => {
+return {
+X: '❌',
+O: '⭕',
+1: '1️⃣',
+2: '2️⃣',
+3: '3️⃣',
+4: '4️⃣',
+5: '5️⃣',
+6: '6️⃣',
+7: '7️⃣',
+8: '8️⃣',
+9: '9️⃣',
+}[v]
+})
+let str = `ID: ${room.id}
+
+${arr.slice(0, 3).join('')}
+${arr.slice(3, 6).join('')}
+${arr.slice(6).join('')}
+
+aguardando @${room.game.currentTurn.split('@')[0]}
+
+Digite *Surrender* para se render e admitir a derrota`
+if (room.x !== room.o) await venom.sendText(room.x, str, m, { mentions: parseMention(str) } )
+await venom.sendText(room.o, str, m, { mentions: parseMention(str) } )
+} else {
+room = {
+id: 'tictactoe-' + (+new Date),
+x: m.chat,
+o: '',
+game: new TicTacToe(m.sender, 'o'),
+state: 'ESPERA'
+}
+if (args.join(" ")) room.name = args.join(" ")
+m.reply('Esperando o parceiro' + (args.join(" ") ? ` digite o comando abaixo ${prefix}${command} ${args.join(" ")}` : ''))
+this.game[room.id] = room
+}
+}
+break
+case 'delttc': case 'delttt': {
+this.game = this.game ? this.game : {}
+try {
+if (this.game) {
+delete this.game
+venom.sendText(m.chat, `Excluiu com sucesso a sessão do TicTacToe`, m)
+} else if (!this.game) {
+m.reply(`Sessão TicTacToe🎮 não existe`)
+} else throw '?'
+} catch (e) {
+m.reply('error!')
+}
+}
+break
 	case 'editinfo': {
                 if (!m.isGroup) throw resposta.group
                 if (!isBotGroupAdmins) throw resposta.botAdmin
@@ -659,28 +789,28 @@ m.reply(`Enviar imagem/vídeo com legenda ${prefix + command}\nDuração do víd
 }
 break
 case 'translate': case 'trans': {
-if (!args.join(" ")) return replay("kd o texto?")
+if (!args.join(" ")) return m.reply("kd o texto?")
 tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=en&kata=${args.join(" ")}`)
 Infoo = tes.info
 Detek = tes.translate
-replay(`🌐Traduzir: ${Detek}\n📘Resultado : ${Infoo}`)
+m.reply(`🌐Traduzir: ${Detek}\n📘Resultado : ${Infoo}`)
 }
 break
 case 'resetgruplink': {
-if (!m.isGroup) return replay(resposta.group)
-if (!isBotGroupAdmins) return replay(resposta.botAdmin)
-if (!isGroupAdmins && !isCreator) return replay(resposta.admin)
+if (!m.isGroup) return m.reply(resposta.group)
+if (!isBotGroupAdmins) return m.reply(resposta.botAdmin)
+if (!isGroupAdmins && !isCreator) return m.reply(resposta.admin)
 venom.groupRevokeInvite(m.chat)
 }
 break
  case 'antilinkall': {
-if (!m.isGroup) return replay(resposta.group)
-if (!isBoGroupAdmins) return replay(resposta.botAdmin)
-if (!isGroupAdmins && !isCreator) return replay(resposta.admin)
+if (!m.isGroup) return m.reply(resposta.group)
+if (!isBotGroupAdmins) return m.reply(resposta.botAdmin)
+if (!isGroupAdmins && !isCreator) return m.reply(resposta.admin)
 if (args[0] === "on") {
-if (AntiLinkTwitter) return replay('Ja Esta Ativado.')
+if (AntiLinkAll) return m.reply('Ja Esta Ativado.')
 ntilinkall.push(from)
-replay('Sucesso em ativar o antilink neste grupo')
+m.reply('Sucesso em ativar o antilink neste grupo')
 var groupe = await venom.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
@@ -689,10 +819,10 @@ mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
 venom.sendMessage(from, {text: `\`\`\`「 ⚠️ATENÇÃO⚠️ 」\`\`\`\n\nSe você não é um administrador, não envie nenhum link neste grupo ou você será expulso imediatamente!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiLinkAll) return replay('Ja desativado.')
+if (!AntiLinkAll) return m.reply('Ja desativado.')
 let off = ntilinkall.indexOf(from)
 ntilinkall.splice(off, 1)
-replay('Sucesso ao desativar o antilink no grupo.')
+m.reply('Sucesso ao desativar o antilink no grupo.')
 } else {
   let buttonsntilink = [
   { buttonId: `${command} on`, buttonText: { displayText: 'On' }, type: 1 },
