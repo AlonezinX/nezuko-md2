@@ -208,7 +208,7 @@ await venom.relayMessage(m.chat, list, {messageId: m.key.id})
 
 if (AntiLinkAll)
    if (budy.includes("https://")){
-if (!isBotAdmins) return
+if (!isBotGroupAdmins) return
 bvl = `\`\`\`「 Link Detectado 」\`\`\`\n\nO administrador enviou um link, o administrador é livre para enviar qualquer link😇`
 if (isGroupAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
@@ -654,12 +654,12 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
 		enviar(resposta.aguarde)
                 if (/image/.test(mime)) {
 		    let media = await quoted.download()
-		    let encmedia = await venom.sendImageAsSticker(m.chat, media, m, { packname: 'nezuko-md by The AloneX Ofc', author: `${pushname}` })
+		    let encmedia = await venom.sendImageAsSticker(m.chat, media, m, { packname: 'nezuko-md', author: `${pushname}` })
 		    await fs.unlinkSync(encmedia)
 		} else if (/video/.test(mime)) {
 		    if ((quoted.msg || quoted).seconds > 11) return enviar(resposta.mxm10s)
 		    let media = await quoted.download()
-		    let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: 'nezuko-md by The AloneX Ofc', author: `${pushname}`})
+		    let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: 'nezuko-md', author: `${pushname}`})
 		    await fs.unlinkSync(encmedia)
 		} else {
             	    throw resposta.errofigu
@@ -842,18 +842,21 @@ venomkkk = `
 
 ┌──⊰ _*GRUPOS*_
 │
+│⊳ ${prefix}promover [@]
+│⊳ ${prefix}rebaixar [@]
+│⊳ ${prefix}banir [@]
+│⊳ ${prefix}adicionar [@]
+│⊳ ${prefix}grupo [opção]
+│⊳ ${prefix}welcome [opção]
+│⊳ ${prefix}antilink [opção]
+│⊳ ${prefix}marcar 
 │⊳ ${prefix}join
 │⊳ ${prefix}setdesc
 │⊳ ${prefix}editinfo [opção]
 │⊳ ${prefix}delete
 │⊳ ${prefix}listonline
-│⊳ ${prefix}promover [@]
-│⊳ ${prefix}rebaixar [@]
-│⊳ ${prefix}banir [@]
-│⊳ ${prefix}adicionar [@]
 │⊳ ${prefix}setname [texto]
 │⊳ ${prefix}hidetag [texto]
-│⊳ ${prefix}grupo [opção]
 │
 ├──⊰ _*DIVERSÃO*_
 │
@@ -864,7 +867,7 @@ venomkkk = `
 │
 ├──⊰ _*CONVERTER*_
 │
-│⊳ ${prefix}emojimix [emoji1 + emoji2]
+│⊳ ${prefix}take nome1|nome2
 │⊳ ${prefix}toimage
 │⊳ ${prefix}sticker
 │⊳ ${prefix}togif
@@ -992,39 +995,24 @@ case 'pinterest': {
                 venom.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
 break
-case 'play': case 'ytplay': {
-                if (!text) throw `Exemplo: ${prefix + command} pandora funk`
-                let yts = require("yt-search")
-                let search = await yts(text)
-                let playvenom = search.videos[Math.floor(Math.random() * search.videos.length)]
-                let buttons = [
-                    {buttonId: `ytmp3 ${playvenom.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
-                    {buttonId: `ytmp4 ${playvenom.url}`, buttonText: {displayText: '► Video'}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: playvenom.thumbnail },
-                    caption: `
-💬 Titulo: ${playvenom.title}
-
-
-▶️ Duração: ${playvenom.timestamp}
-
-👁️️ Views: ${playvenom.views}
-
-⏰️ Publicado há: ${playvenom.ago}
-
-👑 Canal: ${playvenom.author.name}
-
-🔗 Link: ${playvenom.url}
-
-⭔ Descrição: ${playvenom.description}`,
-                    footer: `${nomedobot}`,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                venom.sendMessage(m.chat, buttonMessage, { quoted: m })
-            }
-            break
+case 'play': // ©Blacĸzιn
+blkzin = args.join(' ')
+if(!blkzin) return m.reply(`*❗Modo Certo: ${prefix + comando} Mc Poze❗*`)
+try {
+blackk = await fetchJson(`https://blkzin.herokuapp.com/download/play?&nome=${blkzin}&apikey=blackzin`)
+m.reply(mess.wait)
+pla = `❗мυѕιca pedιda por @${sender.split('@')[0]}❗ 
+título:${blackk.resultado.título}
+views: ${blackk.resultado.visualizações}
+canal: ${blackk.resultado.canal}
+publicado: ${blackk.resultado.publicado}`
+img = await getBuffer(blackk.resultado.thumb)
+venom.sendMessage(from,{image: img,thumbnail:null , caption: pla,contextInfo:{ mentionedJid:[sender]}})
+aud = await getBuffer(blackk.resultado.link)
+venom.sendMessage(from,{audio: aud, mimetype: 'audio/mp4'})
+} catch {
+m.reply('Api Do Blkzin Ta Off!!')}
+break
 	    case 'ytmp3': case 'ytaudio': {
                 if (!text) throw `Exemplo : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
 		let { aiovideodl } = require('./lib/scraper')
@@ -1049,7 +1037,7 @@ case 'play': case 'ytplay': {
             }
             break
 case 'metadinha': {
-                enviar(resposta.aguarde)
+                m.reply(resposta.aguarde)
                 let cuecadovenom = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
                 let venompikakkk = cuecadovenom[Math.floor(Math.random() * cuecadovenom.length)]
                 venom.sendMessage(m.chat, { image: { url: venompikakkk.male }, caption: `Menino` }, { quoted: m })
@@ -1060,7 +1048,7 @@ case 'metadinha': {
             default:
             
 if (prefix && isCmd) {
-enviar(`
+m.reply(`
 ╭━━━━━━━━━━━
 ┊ (comando: ${command} não registrado digite ${prefix}menu)
 ╰───────────────────`)
@@ -1068,7 +1056,7 @@ console.log(color('COMANDO NAO REGISTRADO', 'green'))
 }            
 
  if (budy.startsWith('alone')) {
-                     enviar('oq vc quer com o meu criador ?')
+                     m.reply('oq vc quer com o meu criador ?')
                      console.log(color('AUTO RESPOSTA', 'blue'))
 
               
