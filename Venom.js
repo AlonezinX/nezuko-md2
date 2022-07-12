@@ -28,6 +28,7 @@ const  sp = '⭔'
 const dono = ['558898204406','558898204406'] //dono
 const venomapis = 'https://nezuko-rest-api.herokuapp.com/docs' 
 const apikey  = [ 'alonezxkk' ]
+ntilinkall = []
 wlcm = []
 
 APIs = {
@@ -100,6 +101,7 @@ module.exports = venom = async (venom, m, chatUpdate) => {
 	const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 	const isGroupAdmins = groupAdmins.includes(m.sender) || false
 	const welcm = m.isGroup ? wlcm.includes(from) : true
+	const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false
 	
 
 //COLOUE SEU NUMERO
@@ -204,6 +206,26 @@ sections: sections
 await venom.relayMessage(m.chat, list, {messageId: m.key.id})
 }
 
+if (AntiLinkAll)
+   if (budy.includes("https://")){
+if (!isBotAdmins) return
+bvl = `\`\`\`「 Link Detectado9 」\`\`\`\n\nO administrador enviou um link, o administrador é livre para enviar qualquer link😇`
+if (isGroupAdmins) return m.reply(bvl)
+if (m.key.fromMe) return m.reply(bvl)
+if (isCreator) return m.reply(bvl)
+kice = m.sender
+await venom.groupParticipantsUpdate(m.chat, [kice], 'remove')
+venom.sendMessage(from, {text:`\`\`\`「 Link Detectado 」\`\`\`\n\n@${kice.split("@")[0]} Foi expulso por enviar link neste grupo`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+} else {
+}
+
+const reactionMessage = {
+                    react: {
+                        text: args[0],
+                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
+                    }
+                }
+
 //IA
 
 
@@ -244,7 +266,7 @@ if (!m.isGroup) throw resposta.group
                // if (!m.isGroup) return enviar (resposta.grup)
 //if (!isCreator) return enviar (resposta.dono)
               //  if (!isBotAdmins) throw resposta.botAdmin
-           // if (!isAdmins) throw resposta.admin
+           // if (!isGroupAdmins) throw resposta.admin
 let teks = `══ *👥membros!* ══
  
  ➲ *Mensagem: ${q ? q : 'Em Branco'}*\n\n`
@@ -557,17 +579,6 @@ console.log(e)
 enviar('deu erro na api filho')
 }
 break
- case 'reagir': {                
-                reactionMessage = {
-                    react: {
-                        text: args[0],
-                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
-                    }
-                }
-                venom.sendMessage(m.chat, reactionMessage)
-            }
-            break             
-	    
             case 'owner': case 'creator': case 'criador': case 'dono': {
             	    
 		    		
@@ -622,9 +633,80 @@ m.reply('Sucesso ao desativar a mensagem de boas-vindas neste grupo')
   }
   }
   break
+ case 'react': { 
+venom.sendMessage(m.chat, reactionMessage)} 
+break  
+case 'swm': case 'take': case 'stickerwm': {
+if (!args.join(" ")) return m.reply(`Exemplo :\nswm nezuko-md|The AloneX`)
+const swn = args.join(" ")
+const pcknm = swn.split("|")[0];
+const atnm = swn.split("|")[1];
+if (m.quoted.isAnimated === true) {
+venom.downloadAndSaveMediaMessage(quoted, "gifee")
+venom.sendMessage(from, {sticker:fs.readFileSync("gifee.webp")},{quoted:m})
+} else if (/image/.test(mime)) {
+let media = await quoted.download()
+let encmedia = await venom.sendImageAsSticker(m.chat, media, m, { packname: pcknm, author: global.atnm })
+await fs.unlinkSync(encmedia)
+} else if (/video/.test(mime)) {
+if ((quoted.msg || quoted).seconds > 11) return m.reply('Maksimal 10 detik!')
+let media = await quoted.download()
+let encmedia = await venom.sendVideoAsSticker(m.chat, media, m, { packname: pcknm, author: atnm })
+await fs.unlinkSync(encmedia)
+} else {
+m.reply(`Enviar imagem/vídeo com legenda ${prefix + command}\nDuração do vídeo 1-9 segundos`)
+}
+}
+break
+case 'translate': case 'trans': {
+if (!args.join(" ")) return replay("kd o texto?")
+tes = await fetchJson (`https://megayaa.herokuapp.com/api/translate?to=en&kata=${args.join(" ")}`)
+Infoo = tes.info
+Detek = tes.translate
+replay(`🌐Traduzir: ${Detek}\n📘Resultado : ${Infoo}`)
+}
+break
+case 'resetgruplink': {
+if (!m.isGroup) return replay(resposta.group)
+if (!isBotGroupAdmins) return replay(resposta.botAdmin)
+if (!isGroupAdmins && !isCreator) return replay(resposta.admin)
+venom.groupRevokeInvite(m.chat)
+}
+break
+ case 'antilinkall': {
+if (!m.isGroup) return replay(resposta.group)
+if (!isBoGroupAdmins) return replay(resposta.botAdmin)
+if (!isGroupAdmins && !isCreator) return replay(resposta.admin)
+if (args[0] === "on") {
+if (AntiLinkTwitter) return replay('Ja Esta Ativado.')
+ntilinkall.push(from)
+replay('Sucesso em ativar o antilink neste grupo')
+var groupe = await venom.groupMetadata(from)
+var members = groupe['participants']
+var mems = []
+members.map(async adm => {
+mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
+})
+venom.sendMessage(from, {text: `\`\`\`「 ⚠️ATENÇÃO⚠️ 」\`\`\`\n\nSe você não é um administrador, não envie nenhum link neste grupo ou você será expulso imediatamente!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+} else if (args[0] === "off") {
+if (!AntiLinkAll) return replay('Ja desativado.')
+let off = ntilinkall.indexOf(from)
+ntilinkall.splice(off, 1)
+replay('Sucesso ao desativar o antilink no grupo.')
+} else {
+  let buttonsntilink = [
+  { buttonId: `${command} on`, buttonText: { displayText: 'On' }, type: 1 },
+  { buttonId: `${command} off`, buttonText: { displayText: 'Off' }, type: 1 }
+  ]
+  await venom.sendButtonText(m.chat, buttonsntilink, `Escolha uma das opções abaixo.\n\nOn para ativar\nOff para desativar`, `NEZUKO-MD`, m)
+  }
+  }
+  break 
+  
 //𝒄𝒂𝒔𝒆𝒔 𝒅𝒆 𝒎𝒆𝒏𝒖 𝒅𝒐 𝒃𝒐𝒕            
             
 case 'menu': {
+venom.sendMessage(from, { react: { text: `🗿`, key: m.key }})
             
 venomkkk = `
 
