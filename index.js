@@ -13,6 +13,7 @@ const fetch = require('node-fetch')
 const FileType = require('file-type')
 const { color, DashaLog } = require("./lib/color");
 const figlet = require("figlet");
+const moment = require('moment-timezone')
 const PhoneNumber = require('awesome-phonenumber')
 const res = JSON.parse(fs.readFileSync('./res/data.json'))
 const { smsg, isUrl, generateMessageTag, getBuffer, getRandom } = require('./lib/myfunc')
